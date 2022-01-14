@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var apiModel = ApiModel()
+    @State var apiModelWeather = ApiWeather()
+ 
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+     
+        Text("Hej").task {
+            
+            apiModelWeather.getData()
+        }
+
+       
     }
 }
 
