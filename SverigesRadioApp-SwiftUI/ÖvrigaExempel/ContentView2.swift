@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView2: View {
    @ObservedObject var myapi = MyApi()
+    @StateObject var parserControl = ParseController()
     var body: some View {
         Text("Hej").onAppear {
+            
             myapi.getData()
         }
     }

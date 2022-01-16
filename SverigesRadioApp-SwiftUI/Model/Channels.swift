@@ -9,13 +9,14 @@ import Foundation
 
 struct Response: Decodable {
     var copyright : String
-    var channelsem:[Channels1]
-    var pagination:[Pagination]
+    var channels1:Channels1
+    var pagination:Pagination
 }
 
-struct Channels1: Decodable {
+struct Channels1: Decodable{
     var channels:[Channels]
 }
+
 struct Pagination : Decodable{
     var page : Int
     var size : Int
@@ -26,14 +27,15 @@ struct Pagination : Decodable{
 
 
 
-struct Channels : Decodable {
+struct Channels : Decodable, Identifiable {
     var image : String
     var imagetemplate : String
     var color : String
     var tagline : String
     var siteurl : String
-    var liveaudio : [LiveAudio]
+    var liveaudio : LiveAudio
     var scheduleurl: String
+    var channeltype : String
     var xmltvid : String
     var id : Int
     var name : String
@@ -59,18 +61,24 @@ struct Posts: Hashable, Codable, Identifiable{
 // completion: @escaping ([Response]) -> ()
 class ApiModel: ObservableObject {
     
+    @Published var channels = [Channels]()
    
+    
+    init () {
+        getChannels()
+    }
     func getChannels(){
+        
         guard let url = URL(string: "https://api.sr.se/api/v2/channels?format=json") else {return}
   
+        
         URLSession.shared.dataTask(with: url){data,response,error in
-            guard let data = data, error == nil else {return}
-            print("one")
-            print("data -> \(data.description)")
             
-                if let results = try? JSONDecoder().decode([Response].self, from: data){
-                print("two")
-                print(results)
+            guard let data = data, error == nil else {return}
+           
+                if let result = try? JSONDecoder().decode(Channels1.self, from: data){
+                    self.channels = result.channels
+                    
                 }
         }
         .resume()

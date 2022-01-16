@@ -19,7 +19,23 @@
 		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
 		E19C4E4727907D63003A980A /* Programs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4627907D63003A980A /* Programs.swift */; };
 		E19C4E4927912EDF003A980A /* MyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4827912EDF003A980A /* MyApi.swift */; };
-		E19C4E4B27913182003A980A /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4A27913182003A980A /* ChannelModel.swift */; };
+		E19C4E6F2791ED54003A980A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E6E2791ED54003A980A /* SDWebImageSwiftUI */; };
+		E19C4E712791EF12003A980A /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E702791EF12003A980A /* ImageView.swift */; };
+		E19C4E732791F745003A980A /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E722791F745003A980A /* ChannelsView.swift */; };
+		E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7427922052003A980A /* ImageViewSmall.swift */; };
+		E19C4E7727922B60003A980A /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7627922B60003A980A /* SliderView.swift */; };
+		E19C4E792792DF5C003A980A /* ParseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E782792DF5C003A980A /* ParseController.swift */; };
+		E19C4E7E27933B89003A980A /* ProgramsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7D27933B89003A980A /* ProgramsView.swift */; };
+		E19C4E8027933CB5003A980A /* UrlWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7F27933CB5003A980A /* UrlWebView.swift */; };
+		E19C4E8327943390003A980A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E8227943390003A980A /* FirebaseAuth */; };
+		E19C4E8527943390003A980A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E8427943390003A980A /* FirebaseFirestore */; };
+		E19C4E8727943390003A980A /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E8627943390003A980A /* FirebaseFirestoreSwift-Beta */; };
+		E19C4E8927943390003A980A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E8827943390003A980A /* FirebaseStorage */; };
+		E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8A279433B7003A980A /* InloggningView.swift */; };
+		E19C4E8D27943ADB003A980A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8C27943ADB003A980A /* Styles.swift */; };
+		E19C4E9027943D9A003A980A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8F27943D9A003A980A /* SignupView.swift */; };
+		E19C4E9227948565003A980A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E9127948565003A980A /* GoogleService-Info.plist */; };
+		E19C4E9427948594003A980A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E9327948594003A980A /* Users.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +52,18 @@
 		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		E19C4E4627907D63003A980A /* Programs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Programs.swift; sourceTree = "<group>"; };
 		E19C4E4827912EDF003A980A /* MyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApi.swift; sourceTree = "<group>"; };
-		E19C4E4A27913182003A980A /* ChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
+		E19C4E702791EF12003A980A /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		E19C4E722791F745003A980A /* ChannelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
+		E19C4E7427922052003A980A /* ImageViewSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSmall.swift; sourceTree = "<group>"; };
+		E19C4E7627922B60003A980A /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		E19C4E782792DF5C003A980A /* ParseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseController.swift; sourceTree = "<group>"; };
+		E19C4E7D27933B89003A980A /* ProgramsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsView.swift; sourceTree = "<group>"; };
+		E19C4E7F27933CB5003A980A /* UrlWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlWebView.swift; sourceTree = "<group>"; };
+		E19C4E8A279433B7003A980A /* InloggningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InloggningView.swift; sourceTree = "<group>"; };
+		E19C4E8C27943ADB003A980A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		E19C4E8F27943D9A003A980A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		E19C4E9127948565003A980A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E19C4E9327948594003A980A /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19C4E6F2791ED54003A980A /* SDWebImageSwiftUI in Frameworks */,
+				E19C4E8727943390003A980A /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				E19C4E8327943390003A980A /* FirebaseAuth in Frameworks */,
+				E19C4E8927943390003A980A /* FirebaseStorage in Frameworks */,
+				E19C4E8527943390003A980A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,15 +101,13 @@
 		E12638F1278EF16000774AE0 /* SverigesRadioApp-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				E19C4E7C27933B54003A980A /* Model */,
+				E19C4E7B27933B3E003A980A /* View */,
+				E19C4E7A2792E924003A980A /* Extra */,
 				E19C4E4527907D35003A980A /* ÖvrigaExempel */,
 				E12638F2278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift */,
-				E12638F4278EF16000774AE0 /* ContentView.swift */,
-				E1263900278EF1B200774AE0 /* Channels.swift */,
-				E19C4E4627907D63003A980A /* Programs.swift */,
 				E12638F6278EF16300774AE0 /* Assets.xcassets */,
 				E12638F8278EF16300774AE0 /* Preview Content */,
-				E1263904278F736B00774AE0 /* Weather.swift */,
-				E137288A278F894400A0AEA4 /* ToTryView.swift */,
 			);
 			path = "SverigesRadioApp-SwiftUI";
 			sourceTree = "<group>";
@@ -85,6 +115,7 @@
 		E12638F8278EF16300774AE0 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				E19C4E9127948565003A980A /* GoogleService-Info.plist */,
 				E12638F9278EF16300774AE0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -97,10 +128,46 @@
 				E19C4E412790789F003A980A /* Bundle-Decodable.swift */,
 				E19C4E4327907ADE003A980A /* ContentView2.swift */,
 				E19C4E4827912EDF003A980A /* MyApi.swift */,
-				E19C4E4A27913182003A980A /* ChannelModel.swift */,
 			);
 			name = "ÖvrigaExempel";
 			path = "ÖvrigaExempel";
+			sourceTree = "<group>";
+		};
+		E19C4E7A2792E924003A980A /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				E1263904278F736B00774AE0 /* Weather.swift */,
+				E137288A278F894400A0AEA4 /* ToTryView.swift */,
+				E19C4E7627922B60003A980A /* SliderView.swift */,
+				E19C4E782792DF5C003A980A /* ParseController.swift */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		E19C4E7B27933B3E003A980A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E12638F4278EF16000774AE0 /* ContentView.swift */,
+				E19C4E702791EF12003A980A /* ImageView.swift */,
+				E19C4E722791F745003A980A /* ChannelsView.swift */,
+				E19C4E7427922052003A980A /* ImageViewSmall.swift */,
+				E19C4E7D27933B89003A980A /* ProgramsView.swift */,
+				E19C4E8A279433B7003A980A /* InloggningView.swift */,
+				E19C4E8F27943D9A003A980A /* SignupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E19C4E7C27933B54003A980A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1263900278EF1B200774AE0 /* Channels.swift */,
+				E19C4E4627907D63003A980A /* Programs.swift */,
+				E19C4E7F27933CB5003A980A /* UrlWebView.swift */,
+				E19C4E8C27943ADB003A980A /* Styles.swift */,
+				E19C4E9327948594003A980A /* Users.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +186,13 @@
 			dependencies = (
 			);
 			name = "SverigesRadioApp-SwiftUI";
+			packageProductDependencies = (
+				E19C4E6E2791ED54003A980A /* SDWebImageSwiftUI */,
+				E19C4E8227943390003A980A /* FirebaseAuth */,
+				E19C4E8427943390003A980A /* FirebaseFirestore */,
+				E19C4E8627943390003A980A /* FirebaseFirestoreSwift-Beta */,
+				E19C4E8827943390003A980A /* FirebaseStorage */,
+			);
 			productName = "SverigesRadioApp-SwiftUI";
 			productReference = E12638EF278EF16000774AE0 /* SverigesRadioApp-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +221,10 @@
 				Base,
 			);
 			mainGroup = E12638E6278EF16000774AE0;
+			packageReferences = (
+				E19C4E6D2791ED54003A980A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = E12638F0278EF16000774AE0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12638FA278EF16300774AE0 /* Preview Assets.xcassets in Resources */,
+				E19C4E9227948565003A980A /* GoogleService-Info.plist in Resources */,
 				E19C4E4027905C33003A980A /* myData.json in Resources */,
 				E12638F7278EF16300774AE0 /* Assets.xcassets in Resources */,
 			);
@@ -174,16 +253,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19C4E9027943D9A003A980A /* SignupView.swift in Sources */,
+				E19C4E712791EF12003A980A /* ImageView.swift in Sources */,
+				E19C4E7727922B60003A980A /* SliderView.swift in Sources */,
+				E19C4E732791F745003A980A /* ChannelsView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
+				E19C4E8027933CB5003A980A /* UrlWebView.swift in Sources */,
 				E12638F5278EF16000774AE0 /* ContentView.swift in Sources */,
+				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
+				E19C4E9427948594003A980A /* Users.swift in Sources */,
 				E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */,
-				E19C4E4B27913182003A980A /* ChannelModel.swift in Sources */,
 				E12638F3278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift in Sources */,
+				E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */,
 				E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */,
+				E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */,
+				E19C4E7E27933B89003A980A /* ProgramsView.swift in Sources */,
+				E19C4E792792DF5C003A980A /* ParseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +475,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E19C4E6D2791ED54003A980A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E19C4E6E2791ED54003A980A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19C4E6D2791ED54003A980A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		E19C4E8227943390003A980A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E19C4E8427943390003A980A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E19C4E8627943390003A980A /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		E19C4E8827943390003A980A /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E12638E7278EF16000774AE0 /* Project object */;
 }
