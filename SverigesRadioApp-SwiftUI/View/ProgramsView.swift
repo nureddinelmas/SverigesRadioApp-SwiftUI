@@ -10,8 +10,8 @@ import SwiftUI
 struct ProgramsView: View {
     @State var programs:Programs
     var body: some View {
-        UrlWebView(urlToDisplay: programs.programurl)
-            .navigationTitle(programs.name)
+        UrlWebView(urlToDisplay: programs.programurl ?? "")
+            .navigationTitle(programs.name ?? "")
     }
 }
 
@@ -21,3 +21,6 @@ struct ProgramsView_Previews: PreviewProvider {
         Text("Programs View")
     }
 }
+
+
+

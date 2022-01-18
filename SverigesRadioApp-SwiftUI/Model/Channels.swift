@@ -9,36 +9,21 @@ import Foundation
 
 struct Response: Decodable {
     var copyright : String
-    var channels1:Channels1
-    var pagination:Pagination
-}
-
-struct Channels1: Decodable{
     var channels:[Channels]
 }
 
-struct Pagination : Decodable{
-    var page : Int
-    var size : Int
-    var totalhits : Int
-    var totalpages : Int
-    var nextpage : String
-}
-
-
-
 struct Channels : Decodable, Identifiable {
-    var image : String
-    var imagetemplate : String
-    var color : String
-    var tagline : String
-    var siteurl : String
+    var image : String?
+    var imagetemplate : String?
+    var color : String?
+    var tagline : String?
+    var siteurl : String?
     var liveaudio : LiveAudio
-    var scheduleurl: String
-    var channeltype : String
-    var xmltvid : String
+    var scheduleurl: String?
+    var channeltype : String?
+    var xmltvid : String?
     var id : Int
-    var name : String
+    var name : String?
 }
 
 
@@ -49,37 +34,34 @@ struct LiveAudio: Decodable, Identifiable{
 }
 
 
-struct Posts: Hashable, Codable, Identifiable{
-    
-//     This is an exempel for mig. https://jsonplaceholder.typicode.com/posts
-    var userId : Int
-    var id : Int
-    var title : String
-    var body : String
-}
-
 // completion: @escaping ([Response]) -> ()
 class ApiModel: ObservableObject {
     
     @Published var channels = [Channels]()
    
     
-    init () {
-        getChannels()
+    init (){
+//        DispatchQueue.main.asyncAfter(deadline: .now()) {
+      getChannels()
+//        }
+       
     }
-    func getChannels(){
+    
+    func getChannels() {
         
-        guard let url = URL(string: "https://api.sr.se/api/v2/channels?format=json") else {return}
-  
-        
-        URLSession.shared.dataTask(with: url){data,response,error in
-            
+        guard let url = URL(string: Constants.channelsURL) else {return}
+
+        URLSession.shared.dataTask(with: url){ data,response,error in
+
             guard let data = data, error == nil else {return}
-           
-                if let result = try? JSONDecoder().decode(Channels1.self, from: data){
+            DispatchQueue.main.async {
+                if let result = try? JSONDecoder().decode(Response.self, from: data){
                     self.channels = result.channels
-                    
+
+
                 }
+            }
+               
         }
         .resume()
     }
@@ -107,9 +89,8 @@ class ApiModel: ObservableObject {
     func getChannel(){
         guard let url = URL(string: "https://api.sr.se/api/v2/channels?format=json") else { return }
 
-        print("one")
         URLSession.shared.dataTask(with: url){ data, response, error in
-           print("two")
+
             guard let data = data, error == nil else { return }
     
 //            guard let jsonResponse = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {return}
@@ -128,11 +109,8 @@ class ApiModel: ObservableObject {
 //            }
           
             let result = try? JSONDecoder().decode([Response].self, from: data)
-            print("dort")
-            print(result)
+
             if let result = result {
-                print("bes")
-                print(result)
 
             }
         }

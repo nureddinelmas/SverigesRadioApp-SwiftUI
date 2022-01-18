@@ -7,38 +7,34 @@
 
 import Foundation
 
-struct ProgramIntro: Decodable {
+struct ProgramIntro: Decodable{
     var copyright:String
-    var programs:Programs1
-    var pagination:Pagination
-}
-
-struct Programs1 : Decodable {
     var programs:[Programs]
+//    var pagination:Pagination
 }
 
 struct Programs: Decodable, Identifiable{
-    var description: String
-//    var programcategory:ProgramCategory
-    var broadcastinfo: String
-    var email : String
+    var description: String? = "No Description"
+    var programcategory:ProgramCategory?
+    var broadcastinfo: String?
+    var email : String?
     var phone : String?
-    var programurl: String
-    var programslug : String
-    var programimage: String
-    var programimagetemplate: String
-    var programimagewide: String
-    var programimagetemplatewide : String
-    var socialimage : String
-    var socialimagetemplate: String
+    var programurl: String?
+    var programslug : String?
+    var programimage: String?
+    var programimagetemplate: String?
+    var programimagewide: String?
+    var programimagetemplatewide : String?
+    var socialimage : String?
+    var socialimagetemplate: String?
     var socialmediaplatforms:[SocialMediaPlatform]?
     var channel:ChannelProgram?
     var archived : Bool
     var hasondemand : Bool
     var haspod : Bool
-    var responsibleeditor : String
-    var id : Int
-    var name : String
+    var responsibleeditor : String?
+    var id : Int?
+    var name : String?
 }
 
 struct ChannelProgram : Decodable {
@@ -65,14 +61,17 @@ class ProgramsApi: ObservableObject{
     
     
     func getProgramsData(){
-        guard let url = URL(string: "https://api.sr.se/v2/programs?format=json&page=4") else {return}
+        guard let url = URL(string: Constants.programsURL ) else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {return}
-            
-            if let programs = try? JSONDecoder().decode(Programs1.self, from: data){
-                self.programs = programs.programs
+            DispatchQueue.main.async {
+                if let programs = try? JSONDecoder().decode(ProgramIntro.self, from: data){
+                   
+                    self.programs = programs.programs
+                }
             }
+           
           
         }.resume()
     }

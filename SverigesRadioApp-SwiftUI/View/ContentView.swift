@@ -9,79 +9,64 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ContentView: View {
-    @State var channels:Channels?
-    @ObservedObject var apiModel = ApiModel()
-//    @State var apiModelWeather = ApiWeather()
-    @ObservedObject var apiProgram = ProgramsApi()
-    @State private var showingSheet = false
+    @State var myChannel:Channels?
+
+    @State private var isShowing = false
+
     var body: some View {
-        NavigationView{
-            VStack{
-                ScrollView(.horizontal){
-                    HStack{
-                        ForEach(apiModel.channels){item in
-                            
-                                NavigationLink {
-                                    ChannelsView(myChannel: item)
-                                } label: {
-                                    VStack{
-                                        ImageView(imageString: item.imagetemplate)
-                                        Text(item.name).font(.system(size: 20, weight: .bold, design: .default))
-                                        Text(item.channeltype).font(.system(size: 15, weight: .bold, design: .default))
-                                        
-                                }
-                                }
-                        }
-                    }
-                    .navigationTitle("Channels")
-                    
-                    }
-                
-                
-                
-                SwiftUI.List{
-
-                    ForEach(apiProgram.programs){item in
-                              
-                        
-                            NavigationLink {
-                                ProgramsView(programs: item)
-                            } label: {
-                                VStack(alignment: .center){
-                                WebImage(url: URL(string: item.programimagetemplate)).resizable().frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.3, alignment: .center)
-                                            Text(item.name).font(.system(size: 20, weight: .bold, design: .default))
-                                            Text(item.description).font(.system(size: 15, weight: .bold, design: .default))
-                                            
-                                    }
-                                
-                            }
-                            
-                            }
-                    .navigationTitle("Programs")
-                    }
-            }
-            .toolbar(){
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showingSheet.toggle()
-                    } label: {
-                        Image(systemName: "person.circle")
-                        Text("Sign In")
-                    }.sheet(isPresented: $showingSheet) {
-                        InloggningView()
-                    }
-               
- 
+        NavigationView {
+            ZStack {
+                if isShowing {
+                    SideMenuView(isShowing: $isShowing)
                 }
+                HomeView()
+                    .cornerRadius(isShowing ? 20 : 10)
+                    .offset(x: isShowing ? 200 : 0, y: isShowing ? 44 : 0)
+                    .scaleEffect(isShowing ? 0.8 : 1)
+                    .navigationBarItems(leading: Button(action: {
+                        withAnimation(.spring()) {
+                            isShowing.toggle()
+                        }
+                    }, label: {
+                        Image(systemName: "list.bullet")
+                    }))
+                    .navigationTitle("Sveriges Radio")
+                    .navigationBarTitleDisplayMode(.inline)
+                  
+            }.onAppear {
+                isShowing = false
                 
             }
-
-
+            
+                }
         }
+
       }
-}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct HomeView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10 ){
+            
+            Divider()
+            ChannelsShowView()
+            
+            Divider()
+            ProgramsShowView()
+            Spacer()
+        }
+        //            .toolbar {
+        //                ToolbarItemGroup(placement: .navigationBarTrailing) {
+        //
+        //                       Image("sverigesradioLogo").resizable().scaledToFit()
+        //
+        //                    }
+        //                }
+
     }
 }

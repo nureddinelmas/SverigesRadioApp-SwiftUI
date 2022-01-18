@@ -10,14 +10,14 @@ import Foundation
 class MyApi : ObservableObject{
    
     func getData(){
-        var result:Programs1?
+        var result:Programs?
         guard let path = Bundle.main.path(forResource: "myData", ofType: "json") else {return}
         
         let url = URL(fileURLWithPath: path)
         
         do {
             let jsonData = try Data(contentsOf: url)
-            result = try JSONDecoder().decode(Programs1.self, from: jsonData)
+            result = try JSONDecoder().decode(Programs.self, from: jsonData)
             if let result = result {
                 print(result)
             }

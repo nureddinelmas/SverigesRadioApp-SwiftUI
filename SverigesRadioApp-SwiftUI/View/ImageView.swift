@@ -15,9 +15,10 @@ struct ImageView: View {
         WebImage(url: URL(string: imageString))
              .resizable()
              .aspectRatio(contentMode: .fill)
-             .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
+             .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.1, alignment: .center)
              .shadow(radius: 10)
              .clipped().cornerRadius(20).padding(20)
+//             .shadow(radius: 15)
              
         }
     }

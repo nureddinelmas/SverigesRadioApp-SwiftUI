@@ -36,6 +36,17 @@
 		E19C4E9027943D9A003A980A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8F27943D9A003A980A /* SignupView.swift */; };
 		E19C4E9227948565003A980A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E9127948565003A980A /* GoogleService-Info.plist */; };
 		E19C4E9427948594003A980A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E9327948594003A980A /* Users.swift */; };
+		E19C4EB22794EB06003A980A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB12794EB06003A980A /* Constants.swift */; };
+		E19C4EB427957501003A980A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB327957501003A980A /* LoginView.swift */; };
+		E19C4EB827957A04003A980A /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB727957A04003A980A /* ContentView3.swift */; };
+		E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBA27959165003A980A /* ProgramsShowView.swift */; };
+		E19C4EBD2795A5EB003A980A /* ChannelsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */; };
+		E19C4EBF27970EAD003A980A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBE27970EAD003A980A /* MenuView.swift */; };
+		E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC027973635003A980A /* HexStringToUIColor.swift */; };
+		E19C4EC327976852003A980A /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC227976852003A980A /* SideMenuView.swift */; };
+		E19C4EC52797696D003A980A /* SideMenuOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC42797696D003A980A /* SideMenuOptionsView.swift */; };
+		E19C4EC72797702E003A980A /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC62797702E003A980A /* SideMenuHeaderView.swift */; };
+		E19C4EC9279770BF003A980A /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC8279770BF003A980A /* SideMenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +75,17 @@
 		E19C4E8F27943D9A003A980A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		E19C4E9127948565003A980A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E19C4E9327948594003A980A /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		E19C4EB12794EB06003A980A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E19C4EB327957501003A980A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E19C4EB727957A04003A980A /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
+		E19C4EBA27959165003A980A /* ProgramsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowView.swift; sourceTree = "<group>"; };
+		E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsShowView.swift; sourceTree = "<group>"; };
+		E19C4EBE27970EAD003A980A /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		E19C4EC027973635003A980A /* HexStringToUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexStringToUIColor.swift; sourceTree = "<group>"; };
+		E19C4EC227976852003A980A /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		E19C4EC42797696D003A980A /* SideMenuOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionsView.swift; sourceTree = "<group>"; };
+		E19C4EC62797702E003A980A /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
+		E19C4EC8279770BF003A980A /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +150,7 @@
 				E19C4E412790789F003A980A /* Bundle-Decodable.swift */,
 				E19C4E4327907ADE003A980A /* ContentView2.swift */,
 				E19C4E4827912EDF003A980A /* MyApi.swift */,
+				E19C4EB927957A0A003A980A /* ChannelExempel */,
 			);
 			name = "ÖvrigaExempel";
 			path = "ÖvrigaExempel";
@@ -154,6 +177,11 @@
 				E19C4E7D27933B89003A980A /* ProgramsView.swift */,
 				E19C4E8A279433B7003A980A /* InloggningView.swift */,
 				E19C4E8F27943D9A003A980A /* SignupView.swift */,
+				E19C4EB327957501003A980A /* LoginView.swift */,
+				E19C4EBA27959165003A980A /* ProgramsShowView.swift */,
+				E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */,
+				E19C4EBE27970EAD003A980A /* MenuView.swift */,
+				E19C4ECA279770CB003A980A /* SideMenu */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,8 +194,29 @@
 				E19C4E7F27933CB5003A980A /* UrlWebView.swift */,
 				E19C4E8C27943ADB003A980A /* Styles.swift */,
 				E19C4E9327948594003A980A /* Users.swift */,
+				E19C4EB12794EB06003A980A /* Constants.swift */,
+				E19C4EC027973635003A980A /* HexStringToUIColor.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E19C4EB927957A0A003A980A /* ChannelExempel */ = {
+			isa = PBXGroup;
+			children = (
+				E19C4EB727957A04003A980A /* ContentView3.swift */,
+			);
+			path = ChannelExempel;
+			sourceTree = "<group>";
+		};
+		E19C4ECA279770CB003A980A /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E19C4EC227976852003A980A /* SideMenuView.swift */,
+				E19C4EC42797696D003A980A /* SideMenuOptionsView.swift */,
+				E19C4EC62797702E003A980A /* SideMenuHeaderView.swift */,
+				E19C4EC8279770BF003A980A /* SideMenuViewModel.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,19 +304,30 @@
 			files = (
 				E19C4E9027943D9A003A980A /* SignupView.swift in Sources */,
 				E19C4E712791EF12003A980A /* ImageView.swift in Sources */,
+				E19C4EBD2795A5EB003A980A /* ChannelsShowView.swift in Sources */,
+				E19C4EC9279770BF003A980A /* SideMenuViewModel.swift in Sources */,
 				E19C4E7727922B60003A980A /* SliderView.swift in Sources */,
 				E19C4E732791F745003A980A /* ChannelsView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
+				E19C4EBF27970EAD003A980A /* MenuView.swift in Sources */,
+				E19C4EB827957A04003A980A /* ContentView3.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
+				E19C4EB427957501003A980A /* LoginView.swift in Sources */,
+				E19C4EC52797696D003A980A /* SideMenuOptionsView.swift in Sources */,
 				E19C4E8027933CB5003A980A /* UrlWebView.swift in Sources */,
 				E12638F5278EF16000774AE0 /* ContentView.swift in Sources */,
+				E19C4EC72797702E003A980A /* SideMenuHeaderView.swift in Sources */,
 				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
+				E19C4EB22794EB06003A980A /* Constants.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
+				E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */,
 				E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */,
 				E12638F3278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift in Sources */,
+				E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */,
+				E19C4EC327976852003A980A /* SideMenuView.swift in Sources */,
 				E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */,
 				E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */,
 				E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */,

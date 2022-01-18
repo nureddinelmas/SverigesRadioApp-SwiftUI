@@ -15,10 +15,9 @@ struct SignupView: View {
     @State private var name = ""
     @State private var surname = ""
     @ObservedObject var firebaseActions = FirebaseActions()
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
-        
         Form {
             Spacer()
             Text("Welcome to Sign up Page ").font(.largeTitle)
@@ -57,17 +56,22 @@ struct SignupView: View {
                     Text("User Name ->")
                 }.disableAutocorrection(true).textFieldStyle(.roundedBorder)
             }
+           
             Spacer()
             Button {
 //                         Sign in
                 let users = Users(userName: userName, name: name, surname: surname, email: email)
                let result = firebaseActions.createMember(email: email, password: password, user: users)
                 if result {
-                    dismiss()
+                    presentationMode.wrappedValue.isPresented
                 }
                 } label: {
                     Text("Sign up")
                 }.buttonStyle(ButtonView())
+            
+           
+
+            
         }
     }
     

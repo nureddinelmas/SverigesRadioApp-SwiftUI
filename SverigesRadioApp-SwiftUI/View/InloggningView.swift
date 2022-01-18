@@ -14,13 +14,14 @@ struct InloggningView: View {
     @State private var isshowing = false
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var firebaseActions = FirebaseActions()
+    
     var body: some View {
         Spacer()
         VStack(alignment: .center){
             
             
             Form {
-                Text("Welcome to Login Sida").font(.largeTitle)
+                Text("Welcome to Login Form").font(.largeTitle)
                 Spacer()
                 HStack {
                     Text("Email : ")
@@ -35,25 +36,49 @@ struct InloggningView: View {
                         
                     }.disableAutocorrection(true).textFieldStyle(.roundedBorder)
                 }
-                
-                Button {
-//                         Sign in
-                    let result = firebaseActions.signIn(email: email, password: password)
-                    if result {
+                HStack{
+                    Button {
                         presentationMode.wrappedValue.dismiss()
-                        isshowing = true
-                        print("current id -\(String(describing: Auth.auth().currentUser?.uid))")
-                    }
                     } label: {
-                        Text("Sign in")
+                        HStack{
+                            Image(systemName: "arrowshape.turn.up.backward.circle.fill").frame(width: 10, height: 10, alignment: .trailing).padding(.leading)
+                            Text("Back")
+                        }
                     }.buttonStyle(ButtonView())
+                    Spacer()
+                    Divider()
+                    Spacer()
+                    Button {
+    //                         SIGN IN
+                        
+                        firebaseActions.signIn(email: email, password: password)
+                        if firebaseActions.isOkej {
+                            presentationMode.wrappedValue.dismiss()
+                        } else {
+                            print("Error")
+                        }
+                       
+    //                    if result {
+    //                        presentationMode.wrappedValue.dismiss()
+    //                        isshowing = true
+    //                        print("current id -\(String(describing: Auth.auth().currentUser?.uid))")
+    //                    }
+                        } label: {
+                            HStack{
+                                Text("Sign in")
+                                Image(systemName: "arrowshape.turn.up.right.circle.fill").frame(width: 10, height: 10, alignment: .trailing).padding(.leading)
+                            }
+                        
+                        }.buttonStyle(ButtonView())
+                }
+
                     Spacer()
                 Button {
                     
 //                    Go to signup Sida
                     isshowing.toggle()
                 } label: {
-                    Text("Become a member?")
+                    Text("Not member? Register")
                 }.sheet(isPresented: $isshowing) {
                     SignupView()
                 }
