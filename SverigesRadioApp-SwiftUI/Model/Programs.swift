@@ -55,6 +55,7 @@ class ProgramsApi: ObservableObject{
     
     @Published var programs = [Programs]()
     
+    
     init (){
         getProgramsData()
     }
@@ -75,6 +76,5 @@ class ProgramsApi: ObservableObject{
           
         }.resume()
     }
-
     
 }

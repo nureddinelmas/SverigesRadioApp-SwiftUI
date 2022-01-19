@@ -16,8 +16,10 @@ struct SignupView: View {
     @State private var surname = ""
     @ObservedObject var firebaseActions = FirebaseActions()
     @Environment(\.presentationMode) private var presentationMode
+    var db = Firestore.firestore()
     
     var body: some View {
+
         Form {
             Spacer()
             Text("Welcome to Sign up Page ").font(.largeTitle)
@@ -61,10 +63,26 @@ struct SignupView: View {
             Button {
 //                         Sign in
                 let users = Users(userName: userName, name: name, surname: surname, email: email)
-               let result = firebaseActions.createMember(email: email, password: password, user: users)
-                if result {
-                    presentationMode.wrappedValue.isPresented
+                
+                Auth.auth().createUser(withEmail: email, password: password) { [self] result, error in
+                  
+                    guard let _ = result, error == nil else {return}
+                 
+                    do {
+                        _ = try db.collection("Users").document(Auth.auth().currentUser!.uid).setData(from: users)
+                  
+                        presentationMode.wrappedValue.dismiss()
+                       
+
+                    } catch {
+                        print("Error")
+                    }
                 }
+                
+//               let result = firebaseActions.createMember(email: email, password: password, user: users)
+//                if result {
+//                    presentationMode.wrappedValue.dismiss()
+//                }
                 } label: {
                     Text("Sign up")
                 }.buttonStyle(ButtonView())

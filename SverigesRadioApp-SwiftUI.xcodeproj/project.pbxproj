@@ -41,12 +41,14 @@
 		E19C4EB827957A04003A980A /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB727957A04003A980A /* ContentView3.swift */; };
 		E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBA27959165003A980A /* ProgramsShowView.swift */; };
 		E19C4EBD2795A5EB003A980A /* ChannelsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */; };
-		E19C4EBF27970EAD003A980A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBE27970EAD003A980A /* MenuView.swift */; };
 		E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC027973635003A980A /* HexStringToUIColor.swift */; };
 		E19C4EC327976852003A980A /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC227976852003A980A /* SideMenuView.swift */; };
 		E19C4EC52797696D003A980A /* SideMenuOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC42797696D003A980A /* SideMenuOptionsView.swift */; };
 		E19C4EC72797702E003A980A /* SideMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC62797702E003A980A /* SideMenuHeaderView.swift */; };
 		E19C4EC9279770BF003A980A /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC8279770BF003A980A /* SideMenuViewModel.swift */; };
+		E19C4F15279809D0003A980A /* ChannelsVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */; };
+		E19C4F1927982306003A980A /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F1827982306003A980A /* MyPageView.swift */; };
+		E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F1A279844B4003A980A /* CategoriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,12 +82,14 @@
 		E19C4EB727957A04003A980A /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
 		E19C4EBA27959165003A980A /* ProgramsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowView.swift; sourceTree = "<group>"; };
 		E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsShowView.swift; sourceTree = "<group>"; };
-		E19C4EBE27970EAD003A980A /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E19C4EC027973635003A980A /* HexStringToUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexStringToUIColor.swift; sourceTree = "<group>"; };
 		E19C4EC227976852003A980A /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		E19C4EC42797696D003A980A /* SideMenuOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionsView.swift; sourceTree = "<group>"; };
 		E19C4EC62797702E003A980A /* SideMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeaderView.swift; sourceTree = "<group>"; };
 		E19C4EC8279770BF003A980A /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsVerticalView.swift; sourceTree = "<group>"; };
+		E19C4F1827982306003A980A /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		E19C4F1A279844B4003A980A /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,8 +184,10 @@
 				E19C4EB327957501003A980A /* LoginView.swift */,
 				E19C4EBA27959165003A980A /* ProgramsShowView.swift */,
 				E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */,
-				E19C4EBE27970EAD003A980A /* MenuView.swift */,
 				E19C4ECA279770CB003A980A /* SideMenu */,
+				E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */,
+				E19C4F1827982306003A980A /* MyPageView.swift */,
+				E19C4F1A279844B4003A980A /* CategoriesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,7 +316,7 @@
 				E19C4E732791F745003A980A /* ChannelsView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
-				E19C4EBF27970EAD003A980A /* MenuView.swift in Sources */,
+				E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */,
 				E19C4EB827957A04003A980A /* ContentView3.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
@@ -319,11 +325,13 @@
 				E19C4E8027933CB5003A980A /* UrlWebView.swift in Sources */,
 				E12638F5278EF16000774AE0 /* ContentView.swift in Sources */,
 				E19C4EC72797702E003A980A /* SideMenuHeaderView.swift in Sources */,
+				E19C4F1927982306003A980A /* MyPageView.swift in Sources */,
 				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
 				E19C4EB22794EB06003A980A /* Constants.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
 				E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */,
+				E19C4F15279809D0003A980A /* ChannelsVerticalView.swift in Sources */,
 				E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */,
 				E12638F3278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift in Sources */,
 				E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */,

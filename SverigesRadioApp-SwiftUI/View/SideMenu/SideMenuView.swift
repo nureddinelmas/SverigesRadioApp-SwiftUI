@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SideMenuView: View {
     @Binding var isShowing : Bool
+    let currentId = Auth.auth().currentUser?.uid
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .top, endPoint: .bottom).ignoresSafeArea()
@@ -17,14 +19,20 @@ struct SideMenuView: View {
                 SideMenuHeaderView(isShowing: $isShowing).foregroundColor(.white)
                     .frame(height: 100)
 //                Cell items
-                ForEach(SideMenuViewModel.allCases, id:\.self){option in
+                ForEach(SideMenuViewModel.allCases, id:\.self){ option in
                     NavigationLink {
                         switch option.title {
-                        case "Profile": ChannelsShowView()
-                        case "Channels" : ChannelsShowView()
+                        case "Home" : ContentView()
+                        case "Channels" : ChannelsVerticalView()
                         case "Programs" : ProgramsShowView()
-                        default:
-                           LoginView()
+                        case "Categories" : CategoriesView()
+                        case "My Page" : if currentId != nil {
+                            MyPageView()
+                        }else {
+                            InloggningView()
+                        }
+                        default: ContentView()
+                            
                         }
                         
                     } label: {
@@ -38,6 +46,7 @@ struct SideMenuView: View {
             }
         }.navigationBarHidden(true)
     }
+    
 }
 
 struct SideMenuView_Previews: PreviewProvider {

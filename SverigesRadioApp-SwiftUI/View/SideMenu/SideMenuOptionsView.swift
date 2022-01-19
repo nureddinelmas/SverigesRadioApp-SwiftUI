@@ -25,6 +25,7 @@ struct SideMenuOptionsView: View {
 
 struct SideMenuOptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuOptionsView(viewModel: .logout)
+        
+        Text("Hej")
     }
 }

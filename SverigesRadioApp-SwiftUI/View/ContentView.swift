@@ -52,7 +52,6 @@ struct ContentView_Previews: PreviewProvider {
 struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10 ){
-            
             Divider()
             ChannelsShowView()
             

@@ -8,26 +8,31 @@
 import Foundation
 import SwiftUI
 enum SideMenuViewModel: Int, CaseIterable {
-    case profile
+    case home
     case channels
     case programs
-    case logout
+    case categories
+    case myPage
+
     
     var title : String {
         switch self {
-        case .profile: return "Profile"
+        case .home: return "Home"
         case.channels: return "Channels"
         case.programs: return "Programs"
-        case.logout: return "Logout"
+        case.myPage: return "My Page"
+        case.categories : return "Categories"
         }
     }
     
     var imageName: String {
         switch self {
-        case .profile: return "person"
+        case .home: return "house"
         case.channels: return "radio.fill"
         case.programs: return "bubble.left"
-        case.logout: return "arrow.left.square"
+        case.categories : return "list.bullet.rectangle.fill"
+        case.myPage: return "doc.richtext.fill"
+            
         }
     }
 }

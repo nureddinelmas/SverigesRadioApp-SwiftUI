@@ -15,7 +15,7 @@ struct ProgramsShowView: View {
     var body: some View {
         SwiftUI.ScrollView {
                 VStack{
-                    Text("Programs").font(.largeTitle).background(Color.red).foregroundColor(Color.white)
+                    Text("Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
 //                    ForEach(apiProgram.programs.indices, id: \.self){index in
 //                        if index > 50 && index < 100 {
 //                            Text(apiProgram.programs[index].name!)

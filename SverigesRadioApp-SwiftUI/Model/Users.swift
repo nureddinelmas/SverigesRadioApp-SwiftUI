@@ -19,9 +19,9 @@ struct Users: Codable, Identifiable {
     
 }
 
+
 class FirebaseActions: ObservableObject {
     @Published var users = [Users]()
-    @Published var isOkej : Bool = false
     var db = Firestore.firestore()
 
     init () {
@@ -31,11 +31,14 @@ class FirebaseActions: ObservableObject {
     
     func createMember(email: String, password: String, user: Users) -> Bool{
         var responseCreateMember = false
+        print("one")
         Auth.auth().createUser(withEmail: email, password: password) { [self] result, error in
+           print("two")
             guard let _ = result, error == nil else {return}
-            guard let currentUid = Auth.auth().currentUser?.uid else {return}
+            print("three")
             do {
-                _ = try db.collection("Users").document(currentUid).setData(from: user)
+                _ = try db.collection("Users").document(Auth.auth().currentUser!.uid).setData(from: user)
+                print("four")
                 responseCreateMember = true
             } catch {
                 print("Error")
@@ -45,42 +48,37 @@ class FirebaseActions: ObservableObject {
         return responseCreateMember
     }
     
-    func signIn(email: String, password : String){
- 
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            guard let _ = result, error == nil else {return}
-            guard let _ = Auth.auth().currentUser?.uid else {return}
-            self.isOkej = true
-        }
 
-    }
     
     
     func getUsersData(){
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         
-        db.collection("Users").addSnapshotListener { snapshot, error in
+        db.collection("Users").document(currentUser).addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot, error == nil else { return }
-            for document in snapshot.documents {
                 let result = Result {
-                    try document.data(as: Users.self)
+                    try snapshot.data(as: Users.self)
                 }
                 switch result {
                 case .success(let user):
                     if let user = user {
                         self.users.append(user)
-                       
+
                     } else {
                         print("Users doesnt exist")
                     }
-                    
+
                 case .failure(let failure):
-    
+
                         print("Failed \(failure)")
-                    
+
                 }
-                
-            }
+
+            
+            
         }
     }
+    
+
     
 }
