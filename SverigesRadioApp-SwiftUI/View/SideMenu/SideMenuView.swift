@@ -10,6 +10,7 @@ import Firebase
 
 struct SideMenuView: View {
     @Binding var isShowing : Bool
+    @State var programid = 0
     let currentId = Auth.auth().currentUser?.uid
     var body: some View {
         ZStack{
@@ -25,7 +26,7 @@ struct SideMenuView: View {
                         case "Home" : ContentView()
                         case "Channels" : ChannelsVerticalView()
                         case "Programs" : ProgramsShowView()
-                        case "Categories" : CategoriesView()
+                        case "Categories" : CategoriesView(programid: $programid)
                         case "My Page" : if currentId != nil {
                             MyPageView()
                         }else {
@@ -38,9 +39,6 @@ struct SideMenuView: View {
                     } label: {
                         SideMenuOptionsView(viewModel: option)
                     }
-
-                    
-
                 }
                 Spacer()
             }

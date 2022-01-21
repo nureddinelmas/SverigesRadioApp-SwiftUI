@@ -30,6 +30,7 @@ class FirebaseActions: ObservableObject {
     
     
     func createMember(email: String, password: String, user: Users) -> Bool{
+   
         var responseCreateMember = false
         print("one")
         Auth.auth().createUser(withEmail: email, password: password) { [self] result, error in
@@ -74,6 +75,7 @@ class FirebaseActions: ObservableObject {
 
                 }
 
+            self.objectWillChange.send()
             
             
         }

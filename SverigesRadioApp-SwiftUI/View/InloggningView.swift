@@ -53,7 +53,7 @@ struct InloggningView: View {
                             Auth.auth().signIn(withEmail: email, password: password) { result, error in
                                 guard let _ = result, error == nil else {return}
                                
-                                print("Current User \(Auth.auth().currentUser?.uid)")
+                               
                                 isLoggInOkey = true
                             }
                             isPopupShowing = true

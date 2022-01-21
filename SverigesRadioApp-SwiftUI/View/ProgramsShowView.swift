@@ -12,18 +12,13 @@ import SDWebImageSwiftUI
 struct ProgramsShowView: View {
     @ObservedObject var apiProgram = ProgramsApi()
     @State var isShowing = false
+    @State var isShowMore = 20
     var body: some View {
         SwiftUI.ScrollView {
                 VStack{
                     Text("Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-//                    ForEach(apiProgram.programs.indices, id: \.self){index in
-//                        if index > 50 && index < 100 {
-//                            Text(apiProgram.programs[index].name!)
-//
-//                        }
-//                    }
                     ForEach(apiProgram.programs.indices, id: \.self){index in
-                        if index > 50 && index < 100 {
+                        if index > 0 && index < isShowMore {
                                        NavigationLink {
                                            ProgramsView(programs: apiProgram.programs[index])
                                        } label: {
@@ -37,11 +32,21 @@ struct ProgramsShowView: View {
                         }
                                Text("Ansvårig Person : \(apiProgram.programs[index].responsibleeditor ?? "")")
                             Divider()
-                               }
+                            }
+                       }
+                    Button{
+                        isShowMore += 20
+                    } label: {
+                        HStack{
+                            Image(systemName: "arrow.down.circle.fill").padding(.trailing, 10)
+                            Text("Show more").padding(.trailing, 10)
+                        }.foregroundColor(Color.white).background(Color.red).cornerRadius(20)
+                        
                     }
+                    
                 }
-    }
-}
+           }
+     }
 }
 
 struct ProgramsShowView_Previews: PreviewProvider {
