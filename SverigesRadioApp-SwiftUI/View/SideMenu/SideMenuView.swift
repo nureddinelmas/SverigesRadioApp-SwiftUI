@@ -42,7 +42,7 @@ struct SideMenuView: View {
                 }
                 Spacer()
             }
-        }.navigationBarHidden(true)
+        }.navigationBarHidden(true).frame(width: UIScreen.main.bounds.width)
     }
     
 }

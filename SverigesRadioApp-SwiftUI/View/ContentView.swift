@@ -21,7 +21,7 @@ struct ContentView: View {
                 }
                 HomeView()
                     .cornerRadius(isShowing ? 20 : 10)
-                    .offset(x: isShowing ? 200 : 0, y: isShowing ? 44 : 0)
+                    .offset(x: isShowing ? 250 : 0, y: isShowing ? 44 : 0)
                     .scaleEffect(isShowing ? 0.8 : 1)
                     .navigationBarItems(leading: Button(action: {
                         withAnimation(.spring()) {
@@ -51,21 +51,14 @@ struct ContentView_Previews: PreviewProvider {
 
 struct HomeView: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 10 ){
+        VStack(alignment: .leading, spacing: 4 ){
             Divider()
             ChannelsShowView()
             
             Divider()
-            ProgramsShowView()
+            ProgramsShowView().ignoresSafeArea()
             Spacer()
         }
-        //            .toolbar {
-        //                ToolbarItemGroup(placement: .navigationBarTrailing) {
-        //
-        //                       Image("sverigesradioLogo").resizable().scaledToFit()
-        //
-        //                    }
-        //                }
 
     }
 }

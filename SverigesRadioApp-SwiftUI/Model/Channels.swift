@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import Firebase
+import SwiftUI
 
-struct Response: Decodable {
+struct Response: Codable {
     var copyright : String
     var channels:[Channels]
 }
 
-struct Channels : Decodable, Identifiable {
+struct Channels : Codable, Identifiable {
     var image : String?
     var imagetemplate : String?
     var color : String?
@@ -27,7 +29,7 @@ struct Channels : Decodable, Identifiable {
 }
 
 
-struct LiveAudio: Decodable, Identifiable{
+struct LiveAudio: Codable, Identifiable{
     var id : Int
     var url : String
     var statkey : String
@@ -36,16 +38,29 @@ struct LiveAudio: Decodable, Identifiable{
 
 // completion: @escaping ([Response]) -> ()
 class ApiModel: ObservableObject {
-    
+    let db = Firestore.firestore()
     @Published var channels = [Channels]()
+    @Published var channelsInfoArray = [Channels]()
    
     
     init (){
-//        DispatchQueue.main.asyncAfter(deadline: .now()) {
-      getChannels()
-//        }
-       
+        self.getChannels()
+        favoriProgramsListListener()
     }
+    
+    func saveChannelFavorite(channel: Channels) {
+       
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        do {
+            _ = try db.collection("Users").document(currentUserUid).collection("ChannelFavorites").addDocument(from: channel)
+        } catch {
+            print("save Channels Favortite Error!")
+        }
+    }
+    
+    
+    
     
     func getChannels() {
         
@@ -108,14 +123,76 @@ class ApiModel: ObservableObject {
 //
 //            }
           
-            let result = try? JSONDecoder().decode([Response].self, from: data)
+            let _ = try? JSONDecoder().decode([Response].self, from: data)
 
-            if let result = result {
-
-            }
         }
         .resume()
         
+    }
+    
+    
+    func saveProgramsFavorite(channelFavori: Channels) {
+        
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        do {
+            _ = try db.collection("Users").document(currentUserUid).collection("ChannelsFavorite").document(String(channelFavori.id)).setData(from: channelFavori)
+
+            saveFavoriIsSaved(documentId: "\(channelFavori.id)")
+         
+        } catch {
+            print("save Channels Favortite Error!")
+        }
+    }
+    
+    
+    
+    func checkProgramHasBeenSaved(channelFavori: Channels){
+ 
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("Users").document(currentUserUid).collection("ChannelsFavorite").whereField("id", isEqualTo: channelFavori.id).getDocuments { snapshot, error in
+
+            if ((snapshot?.documents.isEmpty) == true) {
+                self.saveProgramsFavorite(channelFavori: channelFavori)
+            }
+        }
+        }
+    
+    
+    
+    func saveFavoriIsSaved (documentId : String){
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+
+        db.collection("Users").document(currentUserId).collection("ChannelsFavorite").document(documentId).updateData(["isSaved" : true])
+
+    }
+    
+    
+    func favoriProgramsListListener () {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("Users").document(currentUserId).collection("ChannelsFavorite").addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            
+            for document in snapshot.documents {
+                let result = Result {
+                    try document.data(as: Channels.self)
+                }
+            
+                switch result {
+                case .success(let success):
+                    if let success = success {
+                        self.channelsInfoArray.append(success)
+                    }
+                case .failure(let failure):
+                        print("Failed \(failure)")
+                }
+            
+            }
+                    self.objectWillChange.send()
+            }
+
     }
 }
 

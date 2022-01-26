@@ -14,7 +14,7 @@ struct ChannelsShowView: View {
         VStack{
         ScrollView(.horizontal){
             HStack{
-                ForEach(apiModel.channels){item in
+                ForEach(apiModel.channels){ item in
                         NavigationLink {
                             ChannelsView(myChannel: item)
                         } label: {
@@ -28,7 +28,8 @@ struct ChannelsShowView: View {
                             }.border(.white, width: 2).shadow(color: .black, radius: 4).background(Color(renk))
                            
                         }
-                    }
+                        
+                }
                      
                 }
 

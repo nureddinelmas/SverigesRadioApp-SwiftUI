@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
+import Firebase
 
-struct ProgramIntro: Decodable{
+struct ProgramIntro: Codable{
     var copyright:String
     var programs:[Programs]
 //    var pagination:Pagination
 }
 
-struct Programs: Decodable, Identifiable{
+struct Programs: Codable, Identifiable{
     var description: String? = "No Description"
     var programcategory:ProgramCategory?
     var broadcastinfo: String?
@@ -35,31 +37,43 @@ struct Programs: Decodable, Identifiable{
     var responsibleeditor : String?
     var id : Int?
     var name : String?
+    var isSaved : Bool?
 }
 
-struct ChannelProgram : Decodable {
+struct ChannelProgram : Codable {
     var id : Int
     var name: String
 }
-struct ProgramCategory : Decodable {
+struct ProgramCategory : Codable {
     var id: Int
     var name : String
 }
 
-struct SocialMediaPlatform : Decodable {
+struct SocialMediaPlatform : Codable {
     var platform : String
     var platformurl : String
 }
 
+
+struct ProgramsInfoDetails : Codable, Identifiable {
+    var id : Int
+    var isSaved : Bool
+}
+
 class ProgramsApi: ObservableObject{
-    
+    let db = Firestore.firestore()
     @Published var programs = [Programs]()
+    @Published var favoriInfoArray = [Programs]()
+
     
-    
-    init (){
+    init () {
+        
         getProgramsData()
+        favoriProgramsListListener()
+        
     }
-    
+     
+     
     
     func getProgramsData(){
         guard let url = URL(string: Constants.programsURL ) else {return}
@@ -68,7 +82,6 @@ class ProgramsApi: ObservableObject{
             guard let data = data, error == nil else {return}
             DispatchQueue.main.async {
                 if let programs = try? JSONDecoder().decode(ProgramIntro.self, from: data){
-                   
                     self.programs = programs.programs
                 }
             }
@@ -77,4 +90,89 @@ class ProgramsApi: ObservableObject{
         }.resume()
     }
     
-}
+    
+    func saveProgramsFavorite(progFavori: Programs) {
+        
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        do {
+            _ = try db.collection("Users").document(currentUserUid).collection("ProgramsFavorite").document(String(progFavori.id!)).setData(from: progFavori)
+
+            saveFavoriIsSaved(documentId: "\(progFavori.id!)")
+         
+        } catch {
+            print("save Channels Favortite Error!")
+        }
+    }
+    
+    func checkProgramHasBeenSaved(progFavori: Programs){
+ 
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("Users").document(currentUserUid).collection("ProgramsFavorite").whereField("id", isEqualTo: progFavori.id!).getDocuments { snapshot, error in
+
+            if ((snapshot?.documents.isEmpty) == true) {
+                self.saveProgramsFavorite(progFavori: progFavori)
+            }
+        }
+        }
+    
+    
+    
+    func saveFavoriIsSaved (documentId : String){
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+
+        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").document(documentId).updateData(["isSaved" : true])
+
+    }
+    
+    
+    func favoriProgramsListListener () {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            
+            for document in snapshot.documents {
+                let result = Result {
+                    try document.data(as: Programs.self)
+                }
+            
+                switch result {
+                case .success(let success):
+                    if let success = success {
+                     self.favoriInfoArray.append(success)
+                    }
+                case .failure(let failure):
+                        print("Failed \(failure)")
+                }
+            
+            }
+                    self.objectWillChange.send()
+            }
+
+    }
+    
+    
+    
+    func checkDocumentId (docId : Int) -> Bool {
+        var resultDocId : Bool?
+        for i in favoriInfoArray {
+            
+            if i.id == docId {
+                resultDocId = true
+            } else {
+                resultDocId = false
+            }
+        }
+        
+        return resultDocId ?? true
+    }
+    
+    
+    
+    
+    
+        
+    }
+

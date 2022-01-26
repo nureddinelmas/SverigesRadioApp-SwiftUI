@@ -16,6 +16,7 @@ struct SverigesRadioApp_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+           
         }
     }
 }

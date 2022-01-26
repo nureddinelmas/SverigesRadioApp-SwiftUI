@@ -32,14 +32,14 @@ class FirebaseActions: ObservableObject {
     func createMember(email: String, password: String, user: Users) -> Bool{
    
         var responseCreateMember = false
-        print("one")
+
         Auth.auth().createUser(withEmail: email, password: password) { [self] result, error in
-           print("two")
+
             guard let _ = result, error == nil else {return}
-            print("three")
+    
             do {
                 _ = try db.collection("Users").document(Auth.auth().currentUser!.uid).setData(from: user)
-                print("four")
+
                 responseCreateMember = true
             } catch {
                 print("Error")
