@@ -45,7 +45,7 @@ class ApiModel: ObservableObject {
     
     init (){
         self.getChannels()
-        favoriProgramsListListener()
+        favoriChannelListListener()
     }
     
     func saveChannelFavorite(channel: Channels) {
@@ -131,7 +131,7 @@ class ApiModel: ObservableObject {
     }
     
     
-    func saveProgramsFavorite(channelFavori: Channels) {
+    func saveChannelFavorite(channelFavori: Channels) {
         
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         
@@ -147,14 +147,14 @@ class ApiModel: ObservableObject {
     
     
     
-    func checkProgramHasBeenSaved(channelFavori: Channels){
+    func checkChannelHasBeenSaved(channelFavori: Channels){
  
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         
         db.collection("Users").document(currentUserUid).collection("ChannelsFavorite").whereField("id", isEqualTo: channelFavori.id).getDocuments { snapshot, error in
 
             if ((snapshot?.documents.isEmpty) == true) {
-                self.saveProgramsFavorite(channelFavori: channelFavori)
+                self.saveChannelFavorite(channelFavori: channelFavori)
             }
         }
         }
@@ -169,7 +169,7 @@ class ApiModel: ObservableObject {
     }
     
     
-    func favoriProgramsListListener () {
+    func favoriChannelListListener () {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         
         db.collection("Users").document(currentUserId).collection("ChannelsFavorite").addSnapshotListener { snapshot, error in

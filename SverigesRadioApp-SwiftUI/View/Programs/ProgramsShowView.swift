@@ -19,7 +19,7 @@ struct ProgramsShowView: View {
     var body: some View {
         
         SwiftUI.ScrollView {
-                VStack{
+                LazyVStack{
                     Text("Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
                     
                     if searchText != "" {

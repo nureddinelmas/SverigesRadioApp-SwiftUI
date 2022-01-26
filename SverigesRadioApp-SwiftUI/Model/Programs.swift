@@ -153,13 +153,22 @@ class ProgramsApi: ObservableObject{
 
     }
     
-    
-    
-    func checkDocumentId (docId : Int) -> Bool {
-        var resultDocId : Bool?
-        for i in favoriInfoArray {
+    func deleteFavoriPrograms (progFavori: Programs) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").document(String(progFavori.id!)).delete() { err in
+            if let err = err {
+                print("Error removing document \(err)")
+            } else {
+                print("Document successfully removed! ")
+            }
             
-            if i.id == docId {
+        }
+    }
+    
+    func checkDocumentId (program : Programs) -> Bool {
+        var resultDocId : Bool?
+        for item in favoriInfoArray {
+            if item.id == program.id {
                 resultDocId = true
             } else {
                 resultDocId = false

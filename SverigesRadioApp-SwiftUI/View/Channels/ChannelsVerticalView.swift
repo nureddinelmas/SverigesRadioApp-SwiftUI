@@ -33,8 +33,15 @@ struct ChannelsVerticalView: View {
                                             }
                                         
                                         }.border(.white, width: 2).shadow(color: .black, radius: 4).background(Color(renk)).swipeActions {
-                                            Button(action: {apiModel.checkProgramHasBeenSaved(channelFavori: item)}, label: {VStack{Text("Add Favorite")
-                                                Image(systemName: "star.circle.fill")}})
+                                            Button(action: {
+                                                apiModel.checkChannelHasBeenSaved(channelFavori: item)
+                                                
+                                            }, label: {
+                                               
+                                                VStack{Text("Add Favorite")
+                                                Image(systemName: "star.circle.fill")}
+                                                
+                                            })
                                         }.tint(Color.blue)
                                 
                                     }

@@ -16,6 +16,7 @@ struct ProgramsRowView: View {
     @State var programResponsEditor : String
     @ObservedObject var progApiModel = ProgramsApi()
     @State var program : Programs
+
     @State var isFavoriteSaved : Bool
     
     let db = Firestore.firestore()
@@ -43,13 +44,14 @@ struct ProgramsRowView: View {
                         Text(programName).font(.system(size: 18)).padding(.top, 10)
               
                         Spacer()
-                        Button(action: {
-                            
-                            progApiModel.checkProgramHasBeenSaved(progFavori: program)
-                            
-                            
-                        }, label: {
-                            Image(systemName: progApiModel.checkDocumentId(docId: program.id!) ? "square.and.arrow.down.fill" : "star.circle.fill").resizable().frame(width: 25, height: 25).padding(.trailing, 15).padding(.top, 10)})
+                        LikeButtonView(program: $program)
+//                        Button(action: {
+//
+//                            progApiModel.checkProgramHasBeenSaved(progFavori: program)
+//
+//
+//                        }, label: {
+//                            LikeButtonView(docId: program.id!).padding(.trailing, 15).padding(.top, 10)})
                         
                     }
                    

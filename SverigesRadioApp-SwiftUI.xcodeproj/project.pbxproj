@@ -15,6 +15,7 @@
 		E1263905278F736B00774AE0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1263904278F736B00774AE0 /* Weather.swift */; };
 		E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137288A278F894400A0AEA4 /* ToTryView.swift */; };
 		E16AF8F2279F38E00009A6AA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */; };
+		E16AF93E27A1BD330009A6AA /* LikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF93D27A1BD330009A6AA /* LikeButtonView.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
 		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
@@ -50,7 +51,6 @@
 		E19C4F15279809D0003A980A /* ChannelsVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */; };
 		E19C4F1927982306003A980A /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F1827982306003A980A /* MyPageView.swift */; };
 		E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F1A279844B4003A980A /* CategoriesView.swift */; };
-		E19C4F5A279A0684003A980A /* AddFavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F59279A0682003A980A /* AddFavView.swift */; };
 		E19C4F5E279AD547003A980A /* MenuInCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F5D279AD546003A980A /* MenuInCategoryView.swift */; };
 		E19C4F60279AD68D003A980A /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F5F279AD68D003A980A /* CategoriesModel.swift */; };
 		E19C4F7C279B8736003A980A /* ProgramsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4F7B279B8735003A980A /* ProgramsRowView.swift */; };
@@ -66,6 +66,7 @@
 		E1263904278F736B00774AE0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E137288A278F894400A0AEA4 /* ToTryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToTryView.swift; sourceTree = "<group>"; };
 		E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		E16AF93D27A1BD330009A6AA /* LikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonView.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsVerticalView.swift; sourceTree = "<group>"; };
 		E19C4F1827982306003A980A /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		E19C4F1A279844B4003A980A /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
-		E19C4F59279A0682003A980A /* AddFavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavView.swift; sourceTree = "<group>"; };
 		E19C4F5D279AD546003A980A /* MenuInCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInCategoryView.swift; sourceTree = "<group>"; };
 		E19C4F5F279AD68D003A980A /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		E19C4F7B279B8735003A980A /* ProgramsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsRowView.swift; sourceTree = "<group>"; };
@@ -163,6 +163,7 @@
 				E19C4EBA27959165003A980A /* ProgramsShowView.swift */,
 				E19C4F7B279B8735003A980A /* ProgramsRowView.swift */,
 				E19C4E7D27933B89003A980A /* ProgramsView.swift */,
+				E16AF93D27A1BD330009A6AA /* LikeButtonView.swift */,
 			);
 			path = Programs;
 			sourceTree = "<group>";
@@ -213,6 +214,7 @@
 		E19C4E7A2792E924003A980A /* Extra */ = {
 			isa = PBXGroup;
 			children = (
+				E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */,
 				E1263904278F736B00774AE0 /* Weather.swift */,
 				E137288A278F894400A0AEA4 /* ToTryView.swift */,
 				E19C4E7627922B60003A980A /* SliderView.swift */,
@@ -232,8 +234,6 @@
 				E19C4E702791EF12003A980A /* ImageView.swift */,
 				E19C4E7427922052003A980A /* ImageViewSmall.swift */,
 				E19C4ECA279770CB003A980A /* SideMenu */,
-				E19C4F59279A0682003A980A /* AddFavView.swift */,
-				E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -355,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16AF93E27A1BD330009A6AA /* LikeButtonView.swift in Sources */,
 				E19C4E9027943D9A003A980A /* SignupView.swift in Sources */,
 				E19C4F7C279B8736003A980A /* ProgramsRowView.swift in Sources */,
 				E19C4E712791EF12003A980A /* ImageView.swift in Sources */,
@@ -381,7 +382,6 @@
 				E19C4EB22794EB06003A980A /* Constants.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
-				E19C4F5A279A0684003A980A /* AddFavView.swift in Sources */,
 				E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */,
 				E19C4F15279809D0003A980A /* ChannelsVerticalView.swift in Sources */,
 				E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */,
