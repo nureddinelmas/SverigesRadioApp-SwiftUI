@@ -55,8 +55,9 @@ struct InloggningView: View {
                                
                                
                                 isLoggInOkey = true
+                                isPopupShowing = true
                             }
-                            isPopupShowing = true
+                            
                             
                             } label: {
                                 HStack{

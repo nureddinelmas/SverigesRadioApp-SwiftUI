@@ -10,9 +10,7 @@ import Firebase
 
 struct MyPageView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var progApiModel = ProgramsApi()
-    @ObservedObject var chanApiModel = ApiModel()
-    @ObservedObject var toUIColor = HexStringToUIColor()
+
     var body: some View {
         
         TabView{
@@ -48,6 +46,7 @@ struct MyPageView: View {
         })
 }
 }
+
 struct MyPageView_Previews: PreviewProvider {
     static var previews: some View {
         MyPageView()
@@ -56,9 +55,7 @@ struct MyPageView_Previews: PreviewProvider {
 
 
 struct ChannelRowInMyPage: View {
-    @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var progApiModel = ProgramsApi()
-    @ObservedObject var chanApiModel = ApiModel()
+    @StateObject var chanApiModel = ApiModel()
     @ObservedObject var toUIColor = HexStringToUIColor()
     var body: some View {
    
@@ -93,15 +90,12 @@ struct ChannelRowInMyPage: View {
 
 
 struct ProgramsRowInMyPage: View {
-    @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var progApiModel = ProgramsApi()
-    @ObservedObject var chanApiModel = ApiModel()
-    @ObservedObject var toUIColor = HexStringToUIColor()
+    @StateObject var progApiModel = ProgramsApi()
     var body: some View {
         ScrollView {
             Text("My Favori Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-            ForEach(progApiModel.favoriInfoArray){item in
-                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(programsUrl: item.programimagetemplate ?? "", programName: item.name ?? "", isShowing: true, programDescription: item.description ?? "", programResponsEditor: item.responsibleeditor ?? "", program: item, isFavoriteSaved: item.isSaved ?? false) })
+            ForEach(progApiModel.favoriInfoArray){ item in
+                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(programsUrl: item.programimagetemplate , programName: item.name ?? "", isShowing: true, programDescription: item.description! , programResponsEditor: item.responsibleeditor ?? "", progApiModel: progApiModel, program: item) })
             }
         }
     }

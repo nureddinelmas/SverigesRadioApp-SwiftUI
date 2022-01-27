@@ -11,7 +11,7 @@ struct ProgramsView: View {
     @State var programs:Programs
     var body: some View {
         UrlWebView(urlToDisplay: programs.programurl ?? "")
-            .navigationTitle(programs.name ?? "")
+            .navigationTitle(programs.name!)
     }
 }
 

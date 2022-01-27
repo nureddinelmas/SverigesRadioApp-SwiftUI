@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 import Firebase
 
 struct ProgramsShowView: View {
-    @ObservedObject var apiProgram = ProgramsApi()
+    @StateObject var apiProgram = ProgramsApi()
     @State var isShowing = false
     @State var isShowMore = 70
     @State var searchText = ""
@@ -28,7 +28,7 @@ struct ProgramsShowView: View {
                                 NavigationLink {
                                     ProgramsView(programs: item)
                                 } label: {
-                                    ProgramsRowView(programsUrl: item.programimagetemplate ?? "", programName: item.name ?? "", isShowing: true, programDescription: item.description ?? "", programResponsEditor: item.responsibleeditor ?? "", program: item, isFavoriteSaved: false)
+                                    ProgramsRowView(programsUrl: item.programimagetemplate , programName: item.name! , isShowing: true, programDescription: item.description! , programResponsEditor: item.responsibleeditor! , progApiModel: apiProgram, program: item)
                                 }
                             
                             }.searchable(text: $searchText)
@@ -43,7 +43,7 @@ struct ProgramsShowView: View {
                                     } label: {
 
                                                 
-                                                ProgramsRowView(programsUrl: apiProgram.programs[index].programimagetemplate ?? "", programName: apiProgram.programs[index].name ?? "", isShowing: true, programDescription: apiProgram.programs[index].description ?? "", programResponsEditor: apiProgram.programs[index].responsibleeditor ?? "", program: apiProgram.programs[index], isFavoriteSaved: true)
+                                        ProgramsRowView(programsUrl: apiProgram.programs[index].programimagetemplate , programName: apiProgram.programs[index].name! , isShowing: true, programDescription: apiProgram.programs[index].description! , programResponsEditor: apiProgram.programs[index].responsibleeditor! , progApiModel: apiProgram, program: apiProgram.programs[index])
                                     }
 
                             }

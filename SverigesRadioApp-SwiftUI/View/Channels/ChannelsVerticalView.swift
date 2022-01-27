@@ -11,6 +11,7 @@ struct ChannelsVerticalView: View {
     @StateObject var apiModel = ApiModel()
     @ObservedObject var toUIColor = HexStringToUIColor()
     @State private var searchText = ""
+    @State var isAddedFavorite = false
 
     
     var body: some View {
@@ -26,7 +27,8 @@ struct ChannelsVerticalView: View {
                                                     } placeholder: {
                                                         ProgressView()
                                                     }
-                                                VStack{
+                                                VStack {
+                                                    
                                                     Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
                                                     Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                                 }.padding(.leading).searchable(text: $searchText)
@@ -38,8 +40,11 @@ struct ChannelsVerticalView: View {
                                                 
                                             }, label: {
                                                
-                                                VStack{Text("Add Favorite")
-                                                Image(systemName: "star.circle.fill")}
+                                                VStack{
+                                                    Text("Add Favorite")
+                                                    Image(systemName: "heart.fill")
+                                                    
+                                                }
                                                 
                                             })
                                         }.tint(Color.blue)

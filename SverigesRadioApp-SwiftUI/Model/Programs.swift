@@ -24,7 +24,7 @@ struct Programs: Codable, Identifiable{
     var programurl: String?
     var programslug : String?
     var programimage: String?
-    var programimagetemplate: String?
+    var programimagetemplate: String
     var programimagewide: String?
     var programimagetemplatewide : String?
     var socialimage : String?
@@ -62,14 +62,14 @@ struct ProgramsInfoDetails : Codable, Identifiable {
 
 class ProgramsApi: ObservableObject{
     let db = Firestore.firestore()
-    @Published var programs = [Programs]()
-    @Published var favoriInfoArray = [Programs]()
+    @Published var programs = [Programs]() // Json
+    @Published var favoriInfoArray = [Programs]() // från
 
     
     init () {
         
         getProgramsData()
-        favoriProgramsListListener()
+        favoriProgramsListListener ()
         
     }
      
@@ -128,11 +128,12 @@ class ProgramsApi: ObservableObject{
     
     
     func favoriProgramsListListener () {
+
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         
         db.collection("Users").document(currentUserId).collection("ProgramsFavorite").addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { return }
-            
+            self.favoriInfoArray.removeAll()
             for document in snapshot.documents {
                 let result = Result {
                     try document.data(as: Programs.self)
@@ -146,9 +147,12 @@ class ProgramsApi: ObservableObject{
                 case .failure(let failure):
                         print("Failed \(failure)")
                 }
-            
+                
             }
+      
                     self.objectWillChange.send()
+            
+            
             }
 
     }
@@ -166,22 +170,14 @@ class ProgramsApi: ObservableObject{
     }
     
     func checkDocumentId (program : Programs) -> Bool {
-        var resultDocId : Bool?
-        for item in favoriInfoArray {
+            for item in favoriInfoArray {
             if item.id == program.id {
-                resultDocId = true
-            } else {
-                resultDocId = false
+                return true
             }
         }
         
-        return resultDocId ?? true
+       return false
+    
     }
-    
-    
-    
-    
-    
-        
     }
 

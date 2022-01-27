@@ -26,6 +26,7 @@ struct Channels : Codable, Identifiable {
     var xmltvid : String?
     var id : Int
     var name : String?
+    var isSaved : Bool?
 }
 
 
