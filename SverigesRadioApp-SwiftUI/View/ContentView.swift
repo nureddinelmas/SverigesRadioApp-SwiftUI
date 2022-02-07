@@ -10,7 +10,6 @@ import SDWebImageSwiftUI
 
 struct ContentView: View {
     @State var myChannel:Channels?
-
     @State private var isShowing = false
 
     var body: some View {

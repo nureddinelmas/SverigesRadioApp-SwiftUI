@@ -14,12 +14,17 @@ struct ChannelsView: View {
     @State var player:AVPlayer?
     @State var sliderValue: Float = 0
     @ObservedObject var toUIColor = HexStringToUIColor()
+
+
+    
+
     
     var playerItem:AVPlayerItem?
     var audioPlayer = AVAudioPlayer()
     var body: some View {
 
         ZStack {
+         
             let renk = toUIColor.hexStringToUIColor(hex: myChannel.color ?? "")
             Color(renk).ignoresSafeArea()
         HStack{
@@ -50,6 +55,8 @@ struct ChannelsView: View {
         
     }
     
+
+
     private func playing(){
         let playerItem:AVPlayerItem = AVPlayerItem(url: URL(string: myChannel.liveaudio.url)!)
         player = AVPlayer(playerItem: playerItem)

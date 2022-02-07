@@ -9,6 +9,8 @@ import SwiftUI
 import Firebase
 
 struct MyPageView: View {
+    @StateObject var chanApiModel = ApiModel()
+    @StateObject var progApiModel = ProgramsApi()
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -34,17 +36,20 @@ struct MyPageView: View {
         
         
         
-        .navigationBarItems(trailing:  Button {
-            do {
-                try Auth.auth().signOut()
+        .navigationBarItems(trailing: logoutButton )
+}
+    
+    var logoutButton: some View {
+        Button {
+                FirebaseActions.sharedUser.signout()
                 presentationMode.wrappedValue.dismiss()
-            } catch{
-                print("Sign out error!")
-            }
+                chanApiModel.channelsInfoArray.removeAll()
+                progApiModel.favoriInfoArray.removeAll()
+
         } label: {
             Text("Sign Out")
-        })
-}
+        }
+    }
 }
 
 struct MyPageView_Previews: PreviewProvider {
@@ -90,12 +95,12 @@ struct ChannelRowInMyPage: View {
 
 
 struct ProgramsRowInMyPage: View {
-    @StateObject var progApiModel = ProgramsApi()
+    @EnvironmentObject var progApiModel : ProgramsApi
     var body: some View {
         ScrollView {
             Text("My Favori Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
             ForEach(progApiModel.favoriInfoArray){ item in
-                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(programsUrl: item.programimagetemplate , programName: item.name ?? "", isShowing: true, programDescription: item.description! , programResponsEditor: item.responsibleeditor ?? "", progApiModel: progApiModel, program: item) })
+                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(program: item) })
             }
         }
     }

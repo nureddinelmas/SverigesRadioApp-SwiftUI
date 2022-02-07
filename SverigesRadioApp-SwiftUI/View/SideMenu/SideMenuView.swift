@@ -11,7 +11,6 @@ import Firebase
 struct SideMenuView: View {
     @Binding var isShowing : Bool
     @State var programid = 0
-    let currentId = Auth.auth().currentUser?.uid
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .top, endPoint: .bottom).ignoresSafeArea()
@@ -23,14 +22,14 @@ struct SideMenuView: View {
                 ForEach(SideMenuViewModel.allCases, id:\.self){ option in
                     NavigationLink {
                         switch option.title {
-                        case "Home" : ContentView()
+                        case "Home" : ContentView().navigationBarHidden(true)
                         case "Channels" : ChannelsVerticalView()
                         case "Programs" : ProgramsShowView()
                         case "Categories" : CategoriesView(programid: $programid)
-                        case "My Page" : if currentId != nil {
+                        case "My Page" : if FirebaseActions.sharedUser.userSession != nil {
                             MyPageView()
                         }else {
-                            InloggningView()
+                            InloggningView().navigationBarHidden(true)
                         }
                         default: ContentView()
                             

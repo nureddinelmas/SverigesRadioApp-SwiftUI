@@ -14,6 +14,7 @@
 		E1263901278EF1B200774AE0 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1263900278EF1B200774AE0 /* Channels.swift */; };
 		E1263905278F736B00774AE0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1263904278F736B00774AE0 /* Weather.swift */; };
 		E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137288A278F894400A0AEA4 /* ToTryView.swift */; };
+		E140EB9127AA73D200567B49 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EB9027AA73D200567B49 /* Constans.swift */; };
 		E16AF8F2279F38E00009A6AA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
@@ -34,10 +35,9 @@
 		E19C4E8927943390003A980A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E8827943390003A980A /* FirebaseStorage */; };
 		E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8A279433B7003A980A /* InloggningView.swift */; };
 		E19C4E8D27943ADB003A980A /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8C27943ADB003A980A /* Styles.swift */; };
-		E19C4E9027943D9A003A980A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8F27943D9A003A980A /* SignupView.swift */; };
+		E19C4E9027943D9A003A980A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E8F27943D9A003A980A /* RegisterView.swift */; };
 		E19C4E9227948565003A980A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E9127948565003A980A /* GoogleService-Info.plist */; };
 		E19C4E9427948594003A980A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E9327948594003A980A /* Users.swift */; };
-		E19C4EB22794EB06003A980A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB12794EB06003A980A /* Constants.swift */; };
 		E19C4EB427957501003A980A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB327957501003A980A /* LoginView.swift */; };
 		E19C4EB827957A04003A980A /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB727957A04003A980A /* ContentView3.swift */; };
 		E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBA27959165003A980A /* ProgramsShowView.swift */; };
@@ -64,6 +64,7 @@
 		E1263900278EF1B200774AE0 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		E1263904278F736B00774AE0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E137288A278F894400A0AEA4 /* ToTryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToTryView.swift; sourceTree = "<group>"; };
+		E140EB9027AA73D200567B49 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -79,10 +80,9 @@
 		E19C4E7F27933CB5003A980A /* UrlWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlWebView.swift; sourceTree = "<group>"; };
 		E19C4E8A279433B7003A980A /* InloggningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InloggningView.swift; sourceTree = "<group>"; };
 		E19C4E8C27943ADB003A980A /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		E19C4E8F27943D9A003A980A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		E19C4E8F27943D9A003A980A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E19C4E9127948565003A980A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E19C4E9327948594003A980A /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
-		E19C4EB12794EB06003A980A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E19C4EB327957501003A980A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E19C4EB727957A04003A980A /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
 		E19C4EBA27959165003A980A /* ProgramsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowView.swift; sourceTree = "<group>"; };
@@ -135,6 +135,7 @@
 		E12638F1278EF16000774AE0 /* SverigesRadioApp-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				E140EB8F27AA73C400567B49 /* Utils */,
 				E19C4E7C27933B54003A980A /* Model */,
 				E19C4E7B27933B3E003A980A /* View */,
 				E19C4E7A2792E924003A980A /* Extra */,
@@ -153,6 +154,16 @@
 				E12638F9278EF16300774AE0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E140EB8F27AA73C400567B49 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E140EB9027AA73D200567B49 /* Constans.swift */,
+				E19C4E702791EF12003A980A /* ImageView.swift */,
+				E19C4E7427922052003A980A /* ImageViewSmall.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E16AF8CF279CCF5D0009A6AA /* Programs */ = {
@@ -189,7 +200,7 @@
 			children = (
 				E19C4F1827982306003A980A /* MyPageView.swift */,
 				E19C4E8A279433B7003A980A /* InloggningView.swift */,
-				E19C4E8F27943D9A003A980A /* SignupView.swift */,
+				E19C4E8F27943D9A003A980A /* RegisterView.swift */,
 				E19C4EB327957501003A980A /* LoginView.swift */,
 			);
 			path = Login;
@@ -228,8 +239,6 @@
 				E16AF8D0279CCF7A0009A6AA /* Channels */,
 				E16AF8CF279CCF5D0009A6AA /* Programs */,
 				E12638F4278EF16000774AE0 /* ContentView.swift */,
-				E19C4E702791EF12003A980A /* ImageView.swift */,
-				E19C4E7427922052003A980A /* ImageViewSmall.swift */,
 				E19C4ECA279770CB003A980A /* SideMenu */,
 			);
 			path = View;
@@ -243,7 +252,6 @@
 				E19C4E7F27933CB5003A980A /* UrlWebView.swift */,
 				E19C4E8C27943ADB003A980A /* Styles.swift */,
 				E19C4E9327948594003A980A /* Users.swift */,
-				E19C4EB12794EB06003A980A /* Constants.swift */,
 				E19C4EC027973635003A980A /* HexStringToUIColor.swift */,
 				E19C4F5F279AD68D003A980A /* CategoriesModel.swift */,
 			);
@@ -352,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E19C4E9027943D9A003A980A /* SignupView.swift in Sources */,
+				E19C4E9027943D9A003A980A /* RegisterView.swift in Sources */,
 				E19C4F7C279B8736003A980A /* ProgramsRowView.swift in Sources */,
 				E19C4E712791EF12003A980A /* ImageView.swift in Sources */,
 				E19C4EBD2795A5EB003A980A /* ChannelsShowView.swift in Sources */,
@@ -360,6 +368,7 @@
 				E19C4F5E279AD547003A980A /* MenuInCategoryView.swift in Sources */,
 				E19C4EC9279770BF003A980A /* SideMenuViewModel.swift in Sources */,
 				E19C4E7727922B60003A980A /* SliderView.swift in Sources */,
+				E140EB9127AA73D200567B49 /* Constans.swift in Sources */,
 				E19C4E732791F745003A980A /* ChannelsView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
@@ -375,7 +384,6 @@
 				E19C4F1927982306003A980A /* MyPageView.swift in Sources */,
 				E16AF8F2279F38E00009A6AA /* SearchBarView.swift in Sources */,
 				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
-				E19C4EB22794EB06003A980A /* Constants.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
 				E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */,

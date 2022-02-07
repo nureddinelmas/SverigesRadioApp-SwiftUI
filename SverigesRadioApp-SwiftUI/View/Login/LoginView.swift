@@ -9,9 +9,9 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
-    @State var currentID = Auth.auth().currentUser?.uid
+
     @State private var showingSheet = false
-    @ObservedObject var usersActions = FirebaseActions()
+    @EnvironmentObject var usersActions : FirebaseActions
     var body: some View {
         Button {
             showingSheet.toggle()
@@ -24,16 +24,16 @@ struct LoginView: View {
     }
     
     private func isSignIn() -> String {
-        var string : String = ""
-        if currentID == nil {
-            string = "person.circle"
+
+        if usersActions.userSession == nil {
+            return "person.circle"
         } else {
             for i in usersActions.users {
-                string = "\(i.userName)"
+                return "\(i.userName)"
             }
         }
         
-        return string
+        return ""
     }
 }
 

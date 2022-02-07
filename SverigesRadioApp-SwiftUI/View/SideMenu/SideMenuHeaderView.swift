@@ -10,9 +10,8 @@ import Firebase
 
 struct SideMenuHeaderView: View {
     @Binding var isShowing: Bool
-    @State var userName : String = ""
-    @State var user:Users?
-    @ObservedObject var getFirebase = FirebaseActions()
+    @EnvironmentObject var usersActions : FirebaseActions
+
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Button {
@@ -39,18 +38,20 @@ struct SideMenuHeaderView: View {
         }
     }
     
-    func getUser() -> String{
-        var nameSurname : String?
-        if Auth.auth().currentUser?.uid != nil {
-            for i in getFirebase.users {
-                nameSurname =  "\(i.name) \(i.surname)"
-    
-            }
-        } else {
-            nameSurname = "Anonymous"
+    func getUser() -> String {
+//        usersActions.getUsersData()
+        usersActions.getCurrentUser()
+        if usersActions.userSession != nil {
+            guard let currentUser = usersActions.currentUser else {return "Anonymous"}
+            return "\(currentUser.name) \(currentUser.surname)"
+//            for i in usersActions.users{
+//                return "\(i.name) \(i.surname)"
+//
+//            }
+            
         }
       
-        return nameSurname ?? "Sign In"
+        return "Anonymous"
     }
 }
 

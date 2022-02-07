@@ -10,74 +10,115 @@ import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
 
-struct Users: Codable, Identifiable {
+  
+
+struct Users: Identifiable, Decodable, Encodable {
     @DocumentID var id : String?
     var userName : String
     var name : String
     var surname: String
     var email : String
-    
 }
 
 
 class FirebaseActions: ObservableObject {
     @Published var users = [Users]()
-    var db = Firestore.firestore()
+    
+    @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser : Users?
+    
+    static let sharedUser = FirebaseActions()
 
     init () {
-        getUsersData()  
+        getUsersData()
+        userSession = Auth.auth().currentUser
+        getCurrentUser()
     }
     
+    func signout() {
+        userSession = nil
+        try? Auth.auth().signOut()
+    }
     
-    func createMember(email: String, password: String, user: Users) -> Bool{
-   
-        var responseCreateMember = false
-
-        Auth.auth().createUser(withEmail: email, password: password) { [self] result, error in
-
+    func register(user: Users, password: String, completion: @escaping(Bool) -> Void) {
+        Auth.auth().createUser(withEmail: user.email, password: password) { [self] result, error in
+          
             guard let _ = result, error == nil else {return}
-    
-            do {
-                _ = try db.collection("Users").document(Auth.auth().currentUser!.uid).setData(from: user)
+            guard let uid = result?.user.uid else { return }
 
-                responseCreateMember = true
+            do {
+                _ = try COLLECTION_USERS.document(uid).setData(from: user)
+                self.userSession = result?.user
+                completion(true)
             } catch {
                 print("Error")
             }
+            completion(false)
         }
-        print("responseCreateMember -> \(responseCreateMember)")
-        return responseCreateMember
     }
     
+    func login(withEmail email: String, password : String, completion: @escaping(Bool) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            guard let _ = result, error == nil else {return}
+           
+            guard let user = result?.user else { return }
+            self.userSession = user
+            completion(true)
+           
+        }
+        
+    }
+    
+    func getCurrentUser(){
+        guard let uid = userSession?.uid else {return}
+        
+        COLLECTION_USERS.document(uid).getDocument { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            guard let user = try? snapshot.data(as: Users.self) else { return }
+            
+            self.currentUser = user
+           
+        }
 
+    }
+    
     
     
     func getUsersData(){
-        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         
-        db.collection("Users").document(currentUser).addSnapshotListener { snapshot, error in
-            guard let snapshot = snapshot, error == nil else { return }
-                let result = Result {
-                    try snapshot.data(as: Users.self)
-                }
-                switch result {
-                case .success(let user):
-                    if let user = user {
-                        self.users.append(user)
+//        guard let currentUser = userSession?.uid else { return }
+        
+        COLLECTION_USERS.addSnapshotListener { snapshot, err in
 
-                    } else {
-                        print("Users doesnt exist")
-                    }
-
-                case .failure(let failure):
-
-                        print("Failed \(failure)")
-
-                }
-
-            self.objectWillChange.send()
+//            .addSnapshotListener { snapshot, error in
+            self.users.removeAll()
             
+            guard let documents = snapshot?.documents else {return}
+            self.users = documents.compactMap({ try? $0.data(as: Users.self) })
             
+
+//            guard let snapshot = snapshot, error == nil else { return }
+//                let result = Result {
+//                    try snapshot.data(as: Users.self)
+//                }
+//                switch result {
+//                case .success(let user):
+//                    if let user = user {
+//                        self.users.append(user)
+//
+//                        print(user.name)
+//                    } else {
+//                        print("Users doesnt exist")
+//                    }
+//
+//                case .failure(let failure):
+//
+//                        print("Failed \(failure)")
+//
+//                }
+//            self.objectWillChange.send()
+//
+           
         }
     }
     

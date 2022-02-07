@@ -15,7 +15,7 @@ struct InloggningView: View {
     @State private var isPopupShowing = false
     @State private var isLoggInOkey = false
     @Environment(\.presentationMode) private var presentationMode
-    @ObservedObject var firebaseActions = FirebaseActions()
+    @EnvironmentObject var firebaseActions : FirebaseActions
     
     var body: some View {
         ZStack {
@@ -31,7 +31,7 @@ struct InloggningView: View {
                     }
                     
                     HStack{
-                        Text("Password")
+                        Text("Password :")
                         TextField(text: $password, prompt: Text("Required")) {
                             
                         }.disableAutocorrection(true).textFieldStyle(.roundedBorder).shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
@@ -50,13 +50,19 @@ struct InloggningView: View {
                         Spacer()
                         Button {
         //                         SIGN IN
-                            Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                                guard let _ = result, error == nil else {return}
-                               
-                               
-                                isLoggInOkey = true
-                                isPopupShowing = true
+                            firebaseActions.login(withEmail: email, password: password) { islog in
+                                if islog {
+                                    isLoggInOkey = true
+                                    isPopupShowing = true
+                                }
+                                
                             }
+                            
+//                            if firebaseActions.userSession == nil {
+//                                isLoggInOkey = true
+//                                isPopupShowing = true
+//                            }
+                            
                             
                             
                             } label: {
@@ -76,7 +82,7 @@ struct InloggningView: View {
                     } label: {
                         Text("Not member? Register")
                     }.sheet(isPresented: $isSingUpshowing) {
-                        SignupView()
+                        RegisterView()
                     }
                 }
             }
@@ -86,14 +92,14 @@ struct InloggningView: View {
                     Color.black.opacity(0.7).edgesIgnoringSafeArea(.vertical)
 //                    when it opens the background will be dark
                     
-                    VStack(spacing: 20){
+                    VStack(spacing: 10){
                         Text(self.isLoggInOkey ? "Successfully! " : "Unsuccessfully").bold().padding().frame(maxWidth: .infinity).background(Color.orange).foregroundColor(.white)
                         Spacer()
                         
                         Text(self.isLoggInOkey ? "Inloggning is succesfully" : "Inloggning is NOT succesfully").foregroundColor(self.isLoggInOkey ? .green : .red).bold()
                         Spacer()
                         Button {
-                            if isLoggInOkey{
+                            if isLoggInOkey {
                                 presentationMode.wrappedValue.dismiss()
                             } else {
                                 isPopupShowing = false
@@ -114,8 +120,8 @@ struct InloggningView: View {
     }
 }
 
-struct InloggningView_Previews: PreviewProvider {
-    static var previews: some View {
-        InloggningView()
-    }
-}
+//struct InloggningView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InloggningView()
+//    }
+//}

@@ -11,47 +11,37 @@ import SDWebImageSwiftUI
 import Firebase
 
 struct ProgramsShowView: View {
-    @StateObject var apiProgram = ProgramsApi()
+    @EnvironmentObject var apiProgram : ProgramsApi
     @State var isShowing = false
-    @State var isShowMore = 70
-    @State var searchText = ""
-    var db = Firestore.firestore()
+    @State var isShowMore = 20
+    @State var searchText : String = ""
+
+    
+//    apiProgram.programs.filter({"\($0)".contains(searchText) })
+    
+    var program : [Programs] {
+        return searchText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchText)
+    }
+    
+//    mutating var program  : [Programs] { return program1.sort {$0.id! < $1.id!} }
+
     var body: some View {
         
         SwiftUI.ScrollView {
                 LazyVStack{
                     Text("Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-                    
-                    if searchText != "" {
-                       
-                            ForEach(apiProgram.programs.filter({"\($0)".contains(searchText) || searchText.isEmpty})){ item in
+
+                    ForEach(program.sorted(by: { $0.id! > $1.id! }).prefix(isShowMore)) { (item) in
+
                                 NavigationLink {
                                     ProgramsView(programs: item)
-                                } label: {
-                                    ProgramsRowView(programsUrl: item.programimagetemplate , programName: item.name! , isShowing: true, programDescription: item.description! , programResponsEditor: item.responsibleeditor! , progApiModel: apiProgram, program: item)
-                                }
-                            
-                            }.searchable(text: $searchText)
-                   
-                       
-                    } else {
-                        ForEach(apiProgram.programs.indices, id: \.self){index in
-                            if index > 50 && index < isShowMore {
-                                
-                                    NavigationLink {
-                                        ProgramsView(programs: apiProgram.programs[index])
                                     } label: {
-
-                                                
-                                        ProgramsRowView(programsUrl: apiProgram.programs[index].programimagetemplate , programName: apiProgram.programs[index].name! , isShowing: true, programDescription: apiProgram.programs[index].description! , programResponsEditor: apiProgram.programs[index].responsibleeditor! , progApiModel: apiProgram, program: apiProgram.programs[index])
+                                        ProgramsRowView(program: item)
                                     }
-
-                            }
-                        }.searchable(text: $searchText)
-                    }
+                        }.searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Search any programs...")
                     
                     
-                    Button{
+                     Button{
                         isShowMore += 10
                     } label: {
                         HStack{
@@ -65,24 +55,5 @@ struct ProgramsShowView: View {
                 
         }
      }
-    
-    
-    func check(docID: Int) -> Bool {
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return false}
-        var sonuc = false
-        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").whereField("id", isEqualTo: docID).getDocuments { snapshot, error in
-            if snapshot?.documents.isEmpty != true {
-                sonuc = true
-        }
-           
-    }
-        print("sonuc \(sonuc)")
-        return sonuc
-}
 
-}
-struct ProgramsShowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgramsShowView()
-    }
 }

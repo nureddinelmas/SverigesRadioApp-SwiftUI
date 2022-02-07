@@ -16,7 +16,7 @@ struct ProgramIntro: Codable{
 }
 
 struct Programs: Codable, Identifiable{
-    var description: String? = "No Description"
+    var description: String = "No Description"
     var programcategory:ProgramCategory?
     var broadcastinfo: String?
     var email : String?
@@ -36,7 +36,7 @@ struct Programs: Codable, Identifiable{
     var haspod : Bool
     var responsibleeditor : String?
     var id : Int?
-    var name : String?
+    var name : String
     var isSaved : Bool?
 }
 
@@ -62,9 +62,11 @@ struct ProgramsInfoDetails : Codable, Identifiable {
 
 class ProgramsApi: ObservableObject{
     let db = Firestore.firestore()
-    @Published var programs = [Programs]() // Json
-    @Published var favoriInfoArray = [Programs]() // från
+    @Published var programs = [Programs]() // Från Json
+    @Published var favoriInfoArray = [Programs]() // från Firebase
+    
 
+    static let sharedPrograms = ProgramsApi()
     
     init () {
         
@@ -89,6 +91,17 @@ class ProgramsApi: ObservableObject{
           
         }.resume()
     }
+    
+    
+    func filteredPrograms(_ query : String) -> [Programs]{
+   
+//        || $0.description.lowercased().contains(lowercasedQuery)
+        let lowercasedQuery = query.lowercased()
+        let result = programs.filter({ $0.name.lowercased().contains(lowercasedQuery)  })
+        print(result)
+        return result
+    }
+    
     
     
     func saveProgramsFavorite(progFavori: Programs) {
@@ -177,7 +190,10 @@ class ProgramsApi: ObservableObject{
         }
         
        return false
-    
     }
+    
+
+    
+    
     }
 

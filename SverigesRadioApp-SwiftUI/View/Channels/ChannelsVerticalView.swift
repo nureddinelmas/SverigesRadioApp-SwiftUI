@@ -13,10 +13,11 @@ struct ChannelsVerticalView: View {
     @State private var searchText = ""
     @State var isAddedFavorite = false
 
+    var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
     
     var body: some View {
             SwiftUI.List {
-                        ForEach(apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) ){ item in
+                ForEach(channelsFilter.prefix(20) ){ item in
                                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                                         NavigationLink {
                                             ChannelsView(myChannel: item)
@@ -31,25 +32,34 @@ struct ChannelsVerticalView: View {
                                                     
                                                     Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
                                                     Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
-                                                }.padding(.leading).searchable(text: $searchText)
-                                            }
+                                                }.padding(.leading)
+                                            }.padding(.horizontal, 4)
                                         
-                                        }.border(.white, width: 2).shadow(color: .black, radius: 4).background(Color(renk)).swipeActions {
+                                        }.border(.white, width: 2).shadow(color: .black, radius: 12).background(Color(renk)).swipeActions {
                                             Button(action: {
-                                                apiModel.checkChannelHasBeenSaved(channelFavori: item)
+                                                
+                                                if FirebaseActions.sharedUser.userSession != nil {
+                                                    apiModel.checkChannelHasBeenSaved(channelFavori: item)
+                                                }
+                                               
                                                 
                                             }, label: {
                                                
                                                 VStack{
-                                                    Text("Add Favorite")
-                                                    Image(systemName: "heart.fill")
+                                                    if FirebaseActions.sharedUser.userSession != nil {
+                                                        Text("Add Favorite")
+                                                        Image(systemName: "heart.fill")
+                                                    } else {
+                                                        Text("Please Login in")
+                                                    }
+                                                   
                                                     
                                                 }
                                                 
                                             })
                                         }.tint(Color.blue)
                                 
-                                    }
+                                    }.searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Search a channel...")
                             .navigationBarTitle("Channels")                     
                     }
     }

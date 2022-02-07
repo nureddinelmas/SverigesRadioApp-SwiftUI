@@ -15,7 +15,7 @@ struct SverigesRadioApp_SwiftUIApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(FirebaseActions.sharedUser).environmentObject(ProgramsApi.sharedPrograms)
            
         }
     }

@@ -38,26 +38,21 @@ struct CategoriesView: View {
 
 struct CategoryAllView : View {
     @ObservedObject var apiProgram : ProgramsApi
-    @State var isShowMoreCategory = 50
-    @State var isShowing = false
+    @State var isShowMoreCategory = 20
     
     
     var body: some View {
         
-      ForEach(apiProgram.programs.indices, id:\.self){index in
+        ForEach(apiProgram.programs){item in
         
-            if index > 0 && index < isShowMoreCategory {
-        
-             if apiProgram.programs[index].programcategory?.id != nil {
-                  NavigationLink {
-                     ProgramsView(programs: apiProgram.programs[index])
-                         } label: {
-                             CellOfCategoryView(program: apiProgram.programs[index])
-                             Spacer()
-        
+       if item.programcategory?.id != nil {
+          NavigationLink {
+             ProgramsView(programs: item)
+               } label: {
+                CellOfCategoryView(program: item)
                  }
          }
-       }
+
         
     }
         Divider()
@@ -85,11 +80,11 @@ struct CategoryOneView : View {
         ForEach(apiProgram.programs){item in
            
            if item.programcategory?.id == programid {
-                           NavigationLink {
-                               ProgramsView(programs: item)
-                           } label: {
-                               CellOfCategoryView(program: item)
-                           }
+               NavigationLink {
+                ProgramsView(programs: item)
+                 } label: {
+               CellOfCategoryView(program: item)
+            }
                 
             }
                
