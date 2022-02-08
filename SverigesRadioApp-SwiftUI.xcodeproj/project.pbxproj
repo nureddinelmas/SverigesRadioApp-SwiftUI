@@ -18,7 +18,9 @@
 		E140EBD027B1DBBF00567B49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */; };
 		E140EBD227B2607600567B49 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD127B2607600567B49 /* CustomSecureField.swift */; };
 		E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */; };
-		E16AF8F2279F38E00009A6AA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */; };
+		E140EBD827B2993C00567B49 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD727B2993C00567B49 /* RadioButtonsView.swift */; };
+		E140EBE027B2AECC00567B49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E140EBDF27B2AECC00567B49 /* Kingfisher */; };
+		E140EBE227B2B44600567B49 /* KFAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBE127B2B44600567B49 /* KFAnimatedImage.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
 		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
@@ -71,7 +73,8 @@
 		E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E140EBD127B2607600567B49 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowInMainView.swift; sourceTree = "<group>"; };
-		E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		E140EBD727B2993C00567B49 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
+		E140EBE127B2B44600567B49 /* KFAnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFAnimatedImage.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 				E19C4E8727943390003A980A /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				E19C4E8327943390003A980A /* FirebaseAuth in Frameworks */,
 				E19C4E8927943390003A980A /* FirebaseStorage in Frameworks */,
+				E140EBE027B2AECC00567B49 /* Kingfisher in Frameworks */,
 				E19C4E8527943390003A980A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +195,8 @@
 				E19C4E722791F745003A980A /* ChannelsView.swift */,
 				E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */,
 				E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */,
+				E140EBD727B2993C00567B49 /* RadioButtonsView.swift */,
+				E140EBE127B2B44600567B49 /* KFAnimatedImage.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -231,7 +237,6 @@
 		E19C4E7A2792E924003A980A /* Extra */ = {
 			isa = PBXGroup;
 			children = (
-				E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */,
 				E1263904278F736B00774AE0 /* Weather.swift */,
 				E137288A278F894400A0AEA4 /* ToTryView.swift */,
 				E19C4E7627922B60003A980A /* SliderView.swift */,
@@ -308,6 +313,7 @@
 				E19C4E8427943390003A980A /* FirebaseFirestore */,
 				E19C4E8627943390003A980A /* FirebaseFirestoreSwift-Beta */,
 				E19C4E8827943390003A980A /* FirebaseStorage */,
+				E140EBDF27B2AECC00567B49 /* Kingfisher */,
 			);
 			productName = "SverigesRadioApp-SwiftUI";
 			productReference = E12638EF278EF16000774AE0 /* SverigesRadioApp-SwiftUI.app */;
@@ -340,6 +346,7 @@
 			packageReferences = (
 				E19C4E6D2791ED54003A980A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				E19C4E8127943390003A980A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E140EBDE27B2AECB00567B49 /* XCRemoteSwiftPackageReference "KingFisher" */,
 			);
 			productRefGroup = E12638F0278EF16000774AE0 /* Products */;
 			projectDirPath = "";
@@ -383,6 +390,7 @@
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
 				E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */,
+				E140EBE227B2B44600567B49 /* KFAnimatedImage.swift in Sources */,
 				E19C4EB827957A04003A980A /* ContentView3.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
@@ -392,7 +400,7 @@
 				E12638F5278EF16000774AE0 /* ContentView.swift in Sources */,
 				E19C4EC72797702E003A980A /* SideMenuHeaderView.swift in Sources */,
 				E19C4F1927982306003A980A /* MyPageView.swift in Sources */,
-				E16AF8F2279F38E00009A6AA /* SearchBarView.swift in Sources */,
+				E140EBD827B2993C00567B49 /* RadioButtonsView.swift in Sources */,
 				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
@@ -613,6 +621,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E140EBDE27B2AECB00567B49 /* XCRemoteSwiftPackageReference "KingFisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/KingFisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E19C4E6D2791ED54003A980A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -632,6 +648,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E140EBDF27B2AECC00567B49 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E140EBDE27B2AECB00567B49 /* XCRemoteSwiftPackageReference "KingFisher" */;
+			productName = Kingfisher;
+		};
 		E19C4E6E2791ED54003A980A /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E19C4E6D2791ED54003A980A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
