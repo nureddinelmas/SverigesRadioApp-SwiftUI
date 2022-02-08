@@ -43,7 +43,7 @@ struct SideMenuHeaderView: View {
         usersActions.getCurrentUser()
         if usersActions.userSession != nil {
             guard let currentUser = usersActions.currentUser else {return "Anonymous"}
-            return "\(currentUser.name) \(currentUser.surname)"
+            return "\(currentUser.fullname)"
 //            for i in usersActions.users{
 //                return "\(i.name) \(i.surname)"
 //

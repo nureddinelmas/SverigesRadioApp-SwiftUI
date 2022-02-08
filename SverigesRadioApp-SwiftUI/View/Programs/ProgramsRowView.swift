@@ -14,6 +14,7 @@ struct ProgramsRowView: View {
     @EnvironmentObject var progApiModel : ProgramsApi
     @EnvironmentObject var userActions : FirebaseActions
     @State var program : Programs
+    @State var likeButtonShow :Bool
 
     
     let db = Firestore.firestore()
@@ -45,7 +46,8 @@ struct ProgramsRowView: View {
               
                         Spacer()
                         if userActions.userSession != nil {
-                            LikeButtonView(program: program)
+                            
+                            if likeButtonShow { LikeButtonView(program: program) }
                         }
                       
                         
@@ -94,12 +96,4 @@ struct LikeButtonView : View {
     }
 }
 
-
-
-//
-//struct ProgramsRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProgramsRowView().previewLayout(.sizeThatFits)
-//    }
-//}
 

@@ -38,10 +38,10 @@ struct LiveAudio: Codable, Identifiable{
 
 
 // completion: @escaping ([Response]) -> ()
-class ApiModel: ObservableObject {
+class ChannelApiModel: ObservableObject {
     let db = Firestore.firestore()
     @Published var channels = [Channels]()
-    @Published var channelsInfoArray = [Channels]()
+    @Published var channelsSavedArray = [Channels]()
    
     
     init (){
@@ -83,24 +83,6 @@ class ApiModel: ObservableObject {
     }
     
     
-    
-//    func getChannels2() async{
-//        guard let url = URL(string: "https://api.sr.se/api/v2/channels?format=json") else {return}
-//
-//        do {
-//            try await URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-//                let kanal = try JSONDecoder().decode([Channels].self, from: data)
-//                print(kanal)
-//            })
-////            let (data, response) = try await URLSession.shared.data(from: url)
-////            let channelse = try JSONDecoder().decode([Response].self, from: data)
-//
-//
-//
-//        }catch{
-//            print("error")
-//        }
-//    }
     
     func getChannel(){
         guard let url = URL(string: "https://api.sr.se/api/v2/channels?format=json") else { return }
@@ -172,28 +154,39 @@ class ApiModel: ObservableObject {
     
     func favoriChannelListListener () {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+
         
-        db.collection("Users").document(currentUserId).collection("ChannelsFavorite").addSnapshotListener { snapshot, error in
-            guard let snapshot = snapshot else { return }
+        COLLECTION_USERS.document(currentUserId).collection("ChannelsFavorite").addSnapshotListener { snapshot, error in
+     
+            guard let documents = snapshot?.documents else { return }
+            self.channelsSavedArray = documents.compactMap({ try? $0.data(as: Channels.self) })
             
-            for document in snapshot.documents {
-                let result = Result {
-                    try document.data(as: Channels.self)
-                }
-            
-                switch result {
-                case .success(let success):
-                    if let success = success {
-                        self.channelsInfoArray.append(success)
-                    }
-                case .failure(let failure):
-                        print("Failed \(failure)")
-                }
-            
-            }
-                    self.objectWillChange.send()
             }
 
+    }
+    
+    
+    func deleteChannelToSavedInFirebase(delChannel : Channels) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else {return}
+        
+        COLLECTION_USERS.document(currentUserId).collection("ChannelsFavorite").document(String(delChannel.id)).delete { err in
+            if let err = err {
+                print("\(err)")
+            } else {
+                print("Channels has been deleted")
+            }
+        }
+    }
+    
+    
+    func checkToChannelIsSaved(channel: Channels) -> Bool {
+        for item in channelsSavedArray {
+            if channel.id == item.id {
+                return true
+            }
+        }
+      
+        return false
     }
 }
 

@@ -18,9 +18,7 @@ struct CategoriesView: View {
     var body: some View {
             MenuInCategoryView(programid: $programid)
             SwiftUI.ScrollView {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8).foregroundColor(.white)
-                        .shadow(radius: 4, y: 1).frame(width: width - 2, height: height * 3, alignment: .center)
+               
                     VStack {
                         if programid == 0 {
                             CategoryAllView(apiProgram: apiProgram)
@@ -31,25 +29,23 @@ struct CategoriesView: View {
                             
                 }
             }
-
-}
-
 }
 
 struct CategoryAllView : View {
     @ObservedObject var apiProgram : ProgramsApi
-    @State var isShowMoreCategory = 20
+    @State var isShowMoreCategory = 50
     
     
     var body: some View {
         
-        ForEach(apiProgram.programs){item in
+        ForEach(apiProgram.programs.prefix(isShowMoreCategory)){item in
         
        if item.programcategory?.id != nil {
           NavigationLink {
              ProgramsView(programs: item)
                } label: {
                 CellOfCategoryView(program: item)
+                   Divider()
                  }
          }
 
@@ -83,8 +79,9 @@ struct CategoryOneView : View {
                NavigationLink {
                 ProgramsView(programs: item)
                  } label: {
-               CellOfCategoryView(program: item)
-            }
+                   CellOfCategoryView(program: item)
+                     Divider()
+                 }
                 
             }
                
@@ -95,22 +92,27 @@ struct CategoryOneView : View {
 
 
 struct CellOfCategoryView : View {
+    let width = UIScreen.main.bounds.width
+    let height = UIScreen.main.bounds.height
     @State var program : Programs
     var body : some View {
-        VStack(alignment: .center){
+        ZStack {
+            RoundedRectangle(cornerRadius: 8).foregroundColor(.white)
+                .shadow(radius: 4, y: 1).frame(width: width - 2, height: height * 0.40, alignment: .center).shadow(radius: 10)
+        VStack(spacing: 5){
 
             AsyncImage(url: URL(string: program.programimagetemplate )){ima in
-                ima.resizable().scaledToFit()
+                ima.resizable().frame(width: width-20, height: height * 0.25, alignment: .center).scaledToFill()
                    } placeholder: {
                          ProgressView()
                  }
                     
 
-            Text(program.name ?? "" ).font(.system(size: 20, weight: .bold, design: .default))
-            Text(program.description ?? "")
+            Text(program.name ).font(.system(size: 20, weight: .bold, design: .default))
+            Text(program.description )
                     Text("Categori : \(program.programcategory?.name ?? "")")
 
-                }.foregroundColor(.black)
+        }.foregroundColor(.black).padding(.horizontal, 10)
     }
 }
-
+}

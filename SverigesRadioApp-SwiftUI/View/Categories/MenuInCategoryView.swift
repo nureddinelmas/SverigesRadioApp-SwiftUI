@@ -24,7 +24,7 @@ struct MenuInCategoryView: View {
                     programid = 0
                 }
                 Image(systemName: "arrow.down.app.fill")
-            }.font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
+            }.font(.system(size: 20)).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
            
         }
     }

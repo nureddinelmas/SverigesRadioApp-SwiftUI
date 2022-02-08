@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChannelsVerticalView: View {
-    @StateObject var apiModel = ApiModel()
+    @StateObject var apiModel = ChannelApiModel()
     @ObservedObject var toUIColor = HexStringToUIColor()
     @State private var searchText = ""
     @State var isAddedFavorite = false
@@ -16,7 +16,26 @@ struct ChannelsVerticalView: View {
     var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
     
     var body: some View {
-            SwiftUI.List {
+        MyChannelView(searchText: $searchText).searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Search")
+    }
+    
+    
+    
+
+    
+    
+}
+
+
+struct MyChannelView: View {
+    @StateObject var apiModel = ChannelApiModel()
+    @ObservedObject var toUIColor = HexStringToUIColor()
+    @Binding var searchText : String
+    @State var isAddedFavorite = false
+
+    var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
+    var body: some View {
+            SwiftUI.ScrollView {
                 ForEach(channelsFilter.prefix(20) ){ item in
                                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                                         NavigationLink {
@@ -33,46 +52,40 @@ struct ChannelsVerticalView: View {
                                                     Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
                                                     Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                                 }.padding(.leading)
+                                                Spacer()
+                                                MyLikeButtonView(apiChannelModel: apiModel, chn: item).padding(.trailing, 10)
                                             }.padding(.horizontal, 4)
-                                        
-                                        }.border(.white, width: 2).shadow(color: .black, radius: 12).background(Color(renk)).swipeActions {
-                                            Button(action: {
-                                                
-                                                if FirebaseActions.sharedUser.userSession != nil {
-                                                    apiModel.checkChannelHasBeenSaved(channelFavori: item)
-                                                }
-                                               
-                                                
-                                            }, label: {
-                                               
-                                                VStack{
-                                                    if FirebaseActions.sharedUser.userSession != nil {
-                                                        Text("Add Favorite")
-                                                        Image(systemName: "heart.fill")
-                                                    } else {
-                                                        Text("Please Login in")
-                                                    }
-                                                   
-                                                    
-                                                }
-                                                
-                                            })
-                                        }.tint(Color.blue)
+                                            
+                                            
+                                        }.border(.white, width: 2).shadow(color: .black, radius: 12).background(Color(renk)).padding(.trailing, 10).padding(.leading, 10)
                                 
-                                    }.searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Search a channel...")
-                            .navigationBarTitle("Channels")                     
-                    }
-    }
-    
-    
-    
-
-    
-    
-}
-
-struct ChannelsVerticalView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChannelsVerticalView()
+                                    }
+                            .navigationBarTitle("Channels")
+            }.listStyle(InsetListStyle())
     }
 }
+
+struct MyLikeButtonView: View {
+    @ObservedObject var apiChannelModel : ChannelApiModel
+    @State var chn : Channels
+    
+    var body: some View {
+            Button(action: {
+//                Like button Action
+                
+                       if FirebaseActions.sharedUser.userSession != nil {
+                           if apiChannelModel.checkToChannelIsSaved(channel: chn) {
+                               apiChannelModel.deleteChannelToSavedInFirebase(delChannel: chn)
+                           } else {
+                               apiChannelModel.checkChannelHasBeenSaved(channelFavori: chn)
+                           }
+                          
+                       }
+            }) {
+                Image(systemName: apiChannelModel.checkToChannelIsSaved(channel: chn) ? "heart.fill" : "heart").foregroundColor(apiChannelModel.checkToChannelIsSaved(channel: chn) ? .red : .white).shadow(color: apiChannelModel.checkToChannelIsSaved(channel: chn) ? .black : .white, radius: 4).font(.system(size: 23)).onAppear {
+                    apiChannelModel.favoriChannelListListener()
+                }
+            }
+    }
+}
+

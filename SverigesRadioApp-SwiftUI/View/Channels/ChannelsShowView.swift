@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ChannelsShowView: View {
-    @ObservedObject var apiModel = ApiModel()
+    @ObservedObject var apiModel = ChannelApiModel()
     @ObservedObject var toUIColor = HexStringToUIColor()
+    @Binding var searchText : String
+    var channels : [Channels] { return apiModel.channels.filter({ "\($0)".contains(searchText) || searchText.isEmpty}) }
+    
     var body: some View {
         VStack{
         ScrollView(.horizontal){
             HStack{
-                ForEach(apiModel.channels){ item in
+                ForEach(channels){ item in
                         NavigationLink {
                             ChannelsView(myChannel: item)
                         } label: {
@@ -36,10 +39,4 @@ struct ChannelsShowView: View {
         }
         }
     }   
-}
-
-struct ChannelsShowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChannelsShowView().previewLayout(.sizeThatFits)
-    }
 }

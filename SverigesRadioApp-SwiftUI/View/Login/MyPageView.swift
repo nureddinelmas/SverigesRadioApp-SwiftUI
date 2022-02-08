@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct MyPageView: View {
-    @StateObject var chanApiModel = ApiModel()
+    @StateObject var chanApiModel = ChannelApiModel()
     @StateObject var progApiModel = ProgramsApi()
     @Environment(\.presentationMode) var presentationMode
 
@@ -43,7 +43,7 @@ struct MyPageView: View {
         Button {
                 FirebaseActions.sharedUser.signout()
                 presentationMode.wrappedValue.dismiss()
-                chanApiModel.channelsInfoArray.removeAll()
+                chanApiModel.channelsSavedArray.removeAll()
                 progApiModel.favoriInfoArray.removeAll()
 
         } label: {
@@ -60,14 +60,14 @@ struct MyPageView_Previews: PreviewProvider {
 
 
 struct ChannelRowInMyPage: View {
-    @StateObject var chanApiModel = ApiModel()
+    @StateObject var chanApiModel = ChannelApiModel()
     @ObservedObject var toUIColor = HexStringToUIColor()
     var body: some View {
    
         
             ScrollView {
                 Text("My Favori Channels").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-        ForEach(chanApiModel.channelsInfoArray){ item in
+        ForEach(chanApiModel.channelsSavedArray){ item in
                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                         NavigationLink {
                             ChannelsView(myChannel: item)
@@ -100,7 +100,7 @@ struct ProgramsRowInMyPage: View {
         ScrollView {
             Text("My Favori Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
             ForEach(progApiModel.favoriInfoArray){ item in
-                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(program: item) })
+                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(program: item, likeButtonShow: true) })
             }
         }
     }

@@ -172,7 +172,7 @@ class ProgramsApi: ObservableObject{
     
     func deleteFavoriPrograms (progFavori: Programs) {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").document(String(progFavori.id!)).delete() { err in
+        COLLECTION_USERS.document(currentUserId).collection("ProgramsFavorite").document(String(progFavori.id!)).delete() { err in
             if let err = err {
                 print("Error removing document \(err)")
             } else {

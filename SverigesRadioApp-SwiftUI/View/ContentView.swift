@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct ContentView: View {
     @State var myChannel:Channels?
     @State private var isShowing = false
+    @State var searchText = ""
 
     var body: some View {
         NavigationView {
@@ -18,7 +19,7 @@ struct ContentView: View {
                 if isShowing {
                     SideMenuView(isShowing: $isShowing)
                 }
-                HomeView()
+                HomeView(searchText: $searchText)
                     .cornerRadius(isShowing ? 20 : 10)
                     .offset(x: isShowing ? 250 : 0, y: isShowing ? 44 : 0)
                     .scaleEffect(isShowing ? 0.8 : 1)
@@ -31,6 +32,7 @@ struct ContentView: View {
                     }))
                     .navigationTitle("Sveriges Radio")
                     .navigationBarTitleDisplayMode(.inline)
+                    .searchable(text: $searchText, prompt: "Search here any programs or channels...")
                   
             }.onAppear {
                 isShowing = false
@@ -49,13 +51,14 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct HomeView: View {
+    @Binding var searchText :String
     var body: some View {
         VStack(alignment: .leading, spacing: 4 ){
             Divider()
-            ChannelsShowView()
+            ChannelsShowView(searchText: $searchText)
             
             Divider()
-            ProgramsShowView().ignoresSafeArea()
+            ProgramsShowInMainView(searchText: $searchText).ignoresSafeArea()
             Spacer()
         }
 

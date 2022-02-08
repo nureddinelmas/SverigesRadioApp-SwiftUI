@@ -14,31 +14,28 @@ struct ProgramsShowView: View {
     @EnvironmentObject var apiProgram : ProgramsApi
     @State var isShowing = false
     @State var isShowMore = 20
-    @State var searchText : String = ""
+    @State var searchProgramText : String = ""
 
     
-//    apiProgram.programs.filter({"\($0)".contains(searchText) })
-    
     var program : [Programs] {
-        return searchText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchText)
+        return searchProgramText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchProgramText)
     }
     
-//    mutating var program  : [Programs] { return program1.sort {$0.id! < $1.id!} }
 
     var body: some View {
         
         SwiftUI.ScrollView {
                 LazyVStack{
-                    Text("Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
+                    Text("Programs").font(.system(size: 20)).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
 
                     ForEach(program.sorted(by: { $0.id! > $1.id! }).prefix(isShowMore)) { (item) in
 
                                 NavigationLink {
                                     ProgramsView(programs: item)
                                     } label: {
-                                        ProgramsRowView(program: item)
+                                        ProgramsRowView(program: item, likeButtonShow: true)
                                     }
-                        }.searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Search any programs...")
+                    }.searchable(text: $searchProgramText, placement: .navigationBarDrawer, prompt: "Search details in programs...")
                     
                     
                      Button{
@@ -52,7 +49,7 @@ struct ProgramsShowView: View {
                     }
                     
                 }
-                
+               
         }
      }
 

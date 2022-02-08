@@ -15,8 +15,7 @@ import FirebaseFirestoreSwift
 struct Users: Identifiable, Decodable, Encodable {
     @DocumentID var id : String?
     var userName : String
-    var name : String
-    var surname: String
+    var fullname : String
     var email : String
 }
 

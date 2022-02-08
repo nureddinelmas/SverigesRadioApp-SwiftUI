@@ -15,6 +15,9 @@
 		E1263905278F736B00774AE0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1263904278F736B00774AE0 /* Weather.swift */; };
 		E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137288A278F894400A0AEA4 /* ToTryView.swift */; };
 		E140EB9127AA73D200567B49 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EB9027AA73D200567B49 /* Constans.swift */; };
+		E140EBD027B1DBBF00567B49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */; };
+		E140EBD227B2607600567B49 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD127B2607600567B49 /* CustomSecureField.swift */; };
+		E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */; };
 		E16AF8F2279F38E00009A6AA /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
@@ -65,6 +68,9 @@
 		E1263904278F736B00774AE0 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E137288A278F894400A0AEA4 /* ToTryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToTryView.swift; sourceTree = "<group>"; };
 		E140EB9027AA73D200567B49 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E140EBD127B2607600567B49 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowInMainView.swift; sourceTree = "<group>"; };
 		E16AF8F1279F38DF0009A6AA /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -162,6 +168,8 @@
 				E140EB9027AA73D200567B49 /* Constans.swift */,
 				E19C4E702791EF12003A980A /* ImageView.swift */,
 				E19C4E7427922052003A980A /* ImageViewSmall.swift */,
+				E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */,
+				E140EBD127B2607600567B49 /* CustomSecureField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 				E19C4EBA27959165003A980A /* ProgramsShowView.swift */,
 				E19C4F7B279B8735003A980A /* ProgramsRowView.swift */,
 				E19C4E7D27933B89003A980A /* ProgramsView.swift */,
+				E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */,
 			);
 			path = Programs;
 			sourceTree = "<group>";
@@ -370,6 +379,7 @@
 				E19C4E7727922B60003A980A /* SliderView.swift in Sources */,
 				E140EB9127AA73D200567B49 /* Constans.swift in Sources */,
 				E19C4E732791F745003A980A /* ChannelsView.swift in Sources */,
+				E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
 				E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */,
@@ -386,10 +396,12 @@
 				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
+				E140EBD027B1DBBF00567B49 /* CustomTextField.swift in Sources */,
 				E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */,
 				E19C4F15279809D0003A980A /* ChannelsVerticalView.swift in Sources */,
 				E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */,
 				E12638F3278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift in Sources */,
+				E140EBD227B2607600567B49 /* CustomSecureField.swift in Sources */,
 				E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */,
 				E19C4EC327976852003A980A /* SideMenuView.swift in Sources */,
 				E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */,
