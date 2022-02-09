@@ -88,7 +88,7 @@ struct LikeButtonView : View {
                 }
          
         }) {
-            Image(systemName: progApiModel.checkDocumentId(program: program) ? "heart.fill" : "heart").resizable().scaledToFit().frame(width: 25, height: 25).foregroundColor(.red).padding(.trailing, 15).padding(.top, 10)
+            Image(systemName: progApiModel.checkDocumentId(program: program) ? "heart.fill" : "heart").resizable().scaledToFit().frame(width: 25, height: 25).foregroundColor(.red).padding(.trailing, 15).padding(.top, 10).padding(.trailing, 10)
         }.onAppear {
         
             progApiModel.favoriProgramsListListener()

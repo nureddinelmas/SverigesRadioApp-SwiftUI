@@ -13,10 +13,11 @@ struct ChannelsVerticalView: View {
     @State private var searchText = ""
     @State var isAddedFavorite = false
 
+
     var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
     
     var body: some View {
-        MyChannelView(searchText: $searchText).searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Search")
+        MyChannelView(searchText: $searchText).searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Söka en kanal...")
     }
     
     
@@ -32,11 +33,12 @@ struct MyChannelView: View {
     @ObservedObject var toUIColor = HexStringToUIColor()
     @Binding var searchText : String
     @State var isAddedFavorite = false
+    @State var isShowMore = 10
 
     var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
     var body: some View {
             SwiftUI.ScrollView {
-                ForEach(Array(channelsFilter.prefix(20).enumerated()), id:\.offset){ index, item in
+                ForEach(Array(channelsFilter.prefix(isShowMore).enumerated()), id:\.offset){ index, item in
                                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                                         NavigationLink {
                                             RadioButtonsView(indexItem: index, channe: channelsFilter)
@@ -58,9 +60,18 @@ struct MyChannelView: View {
                                             
                                             
                                         }.border(.white, width: 2).shadow(color: .black, radius: 12).background(Color(renk)).padding(.trailing, 10).padding(.leading, 10)
-                                
+                  
                                     }
                             .navigationBarTitle("Channels")
+                Button{
+                   isShowMore += 10
+               } label: {
+                   HStack{
+                       Image(systemName: "arrow.down.circle.fill").padding(.trailing, 10)
+                       Text("Show more").padding(.trailing, 10)
+                   }.foregroundColor(Color.white).background(Color.red).cornerRadius(20)
+                   
+               }
             }.listStyle(InsetListStyle())
     }
 }

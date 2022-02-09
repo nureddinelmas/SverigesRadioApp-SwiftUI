@@ -98,7 +98,7 @@ struct CellOfCategoryView : View {
     var body : some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8).foregroundColor(.white)
-                .shadow(radius: 4, y: 1).frame(width: width - 2, height: height * 0.40, alignment: .center).shadow(radius: 10)
+                
         VStack(spacing: 5){
 
             AsyncImage(url: URL(string: program.programimagetemplate )){ima in
@@ -113,6 +113,6 @@ struct CellOfCategoryView : View {
                     Text("Categori : \(program.programcategory?.name ?? "")")
 
         }.foregroundColor(.black).padding(.horizontal, 10)
-    }
+    }.shadow(radius: 4, y: 1).frame(width: width - 2, height: height * 0.40, alignment: .center).shadow(radius: 10)
 }
 }
