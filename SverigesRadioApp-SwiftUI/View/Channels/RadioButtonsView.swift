@@ -18,23 +18,13 @@ struct RadioButtonsView: View {
         @State var player:AVPlayer?
         @State var sliderValue: Float = 0.0
         @ObservedObject var toUIColor = HexStringToUIColor()
-        @ObservedObject var apiChannelModel : ChannelApiModel
+//        @ObservedObject var apiChannelModel : ChannelApiModel
         @State var indexItem : Int
-        @State var whichArray : Bool
+        let channe : [Channels]
     
-        var channelItem : Channels { if whichArray{
-        return apiChannelModel.channels[indexItem]
-        }
-        return apiChannelModel.channelsSavedArray[indexItem]
-        }
+        var channelItem : Channels { return channe[indexItem] }
     
-        var arrayCount : Int {
-        if whichArray  {
-            apiChannelModel.channels.count-1
-        }
-        
-        return apiChannelModel.channelsSavedArray.count-1
-        }
+        var arrayCount : Int { return channe.count-1 }
 //        var audioPlayer = AVAudioPlayer()
 
         var body: some View {

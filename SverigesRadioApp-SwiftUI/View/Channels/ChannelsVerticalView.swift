@@ -39,7 +39,7 @@ struct MyChannelView: View {
                 ForEach(Array(channelsFilter.prefix(20).enumerated()), id:\.offset){ index, item in
                                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                                         NavigationLink {
-                                            RadioButtonsView(apiChannelModel: apiModel, indexItem: index, whichArray: true)
+                                            RadioButtonsView(indexItem: index, channe: channelsFilter)
                                         } label: {
                                             HStack {
                                                     AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in

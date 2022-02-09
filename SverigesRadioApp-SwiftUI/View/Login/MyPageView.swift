@@ -65,7 +65,7 @@ struct ChannelRowInMyPage: View {
                 ForEach(channels.indices){ index in
                     let renk = toUIColor.hexStringToUIColor(hex: "#\(channels[index].color ?? "")")
                         NavigationLink {
-                            RadioButtonsView(apiChannelModel: chanApiModel, indexItem: index, whichArray: false)
+                            RadioButtonsView(indexItem: index, channe: channels)
                         } label: {
                             HStack {
                                     AsyncImage(url: URL(string: channels[index].imagetemplate ?? "")){img in
