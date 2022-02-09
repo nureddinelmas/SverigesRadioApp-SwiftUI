@@ -36,10 +36,10 @@ struct MyChannelView: View {
     var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
     var body: some View {
             SwiftUI.ScrollView {
-                ForEach(channelsFilter.prefix(20) ){ item in
+                ForEach(Array(channelsFilter.prefix(20).enumerated()), id:\.offset){ index, item in
                                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                                         NavigationLink {
-                                            ChannelsView(myChannel: item)
+                                            RadioButtonsView(apiChannelModel: apiModel, indexItem: index, whichArray: true)
                                         } label: {
                                             HStack {
                                                     AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in

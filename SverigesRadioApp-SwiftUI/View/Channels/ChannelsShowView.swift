@@ -17,16 +17,16 @@ struct ChannelsShowView: View {
         VStack{
         ScrollView(.horizontal){
             HStack{
-                ForEach(channels){ item in
+                ForEach(Array(channels.enumerated()), id: \.offset){ index, element in
                         NavigationLink {
-                            ChannelsView(myChannel: item)
+                            RadioButtonsView(apiChannelModel: apiModel, indexItem: index, whichArray: true)
                         } label: {
-                            let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
+                            let renk = toUIColor.hexStringToUIColor(hex: "#\(channels[index].color ?? "")")
                             ZStack {
                                 VStack{
-                                    ImageView(imageString: item.imagetemplate ?? "")
-                                    Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
-                                    Text(item.channeltype!).font(.system(size: 13, weight: .bold, design: .default)).padding(.bottom).foregroundColor(.white)
+                                    ImageView(imageString: channels[index].imagetemplate ?? "")
+                                    Text(channels[index].name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(channels[index].channeltype!).font(.system(size: 13, weight: .bold, design: .default)).padding(.bottom).foregroundColor(.white)
                                 }
                             }.border(.white, width: 2).shadow(color: .black, radius: 4).background(Color(renk))
                            

@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct MyPageView: View {
-    @StateObject var chanApiModel = ChannelApiModel()
+    @ObservedObject var chanApiModel = ChannelApiModel()
     @StateObject var progApiModel = ProgramsApi()
     @Environment(\.presentationMode) var presentationMode
 
@@ -24,7 +24,7 @@ struct MyPageView: View {
               
             }
            
-            ChannelRowInMyPage().tabItem {
+            ChannelRowInMyPage(chanApiModel: chanApiModel).tabItem {
                 HStack{
                     Image(systemName: "radio.fill")
                     Text("Favori Channels")
@@ -52,35 +52,30 @@ struct MyPageView: View {
     }
 }
 
-struct MyPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyPageView()
-    }
-}
-
 
 struct ChannelRowInMyPage: View {
-    @StateObject var chanApiModel = ChannelApiModel()
+    @ObservedObject var chanApiModel : ChannelApiModel
     @ObservedObject var toUIColor = HexStringToUIColor()
+    var channels : [Channels] { return chanApiModel.channelsSavedArray }
     var body: some View {
    
         
             ScrollView {
                 Text("My Favori Channels").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-        ForEach(chanApiModel.channelsSavedArray){ item in
-                    let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
+                ForEach(channels.indices){ index in
+                    let renk = toUIColor.hexStringToUIColor(hex: "#\(channels[index].color ?? "")")
                         NavigationLink {
-                            ChannelsView(myChannel: item)
+                            RadioButtonsView(apiChannelModel: chanApiModel, indexItem: index, whichArray: false)
                         } label: {
                             HStack {
-                                    AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in
+                                    AsyncImage(url: URL(string: channels[index].imagetemplate ?? "")){img in
                                         img.resizable().scaledToFit().frame(width: 90, height: 90, alignment: .center)
                                     } placeholder: {
                                         ProgressView()
                                     }
                                 VStack{
-                                    Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
-                                    Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(channels[index].name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(channels[index].channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                 }.padding(.leading)
                                 Spacer()
                             }

@@ -20,7 +20,7 @@
 		E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */; };
 		E140EBD827B2993C00567B49 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD727B2993C00567B49 /* RadioButtonsView.swift */; };
 		E140EBE027B2AECC00567B49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E140EBDF27B2AECC00567B49 /* Kingfisher */; };
-		E140EBE227B2B44600567B49 /* KFAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBE127B2B44600567B49 /* KFAnimatedImage.swift */; };
+		E140EBE427B2F2B000567B49 /* RadioPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
 		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
@@ -28,7 +28,6 @@
 		E19C4E4927912EDF003A980A /* MyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4827912EDF003A980A /* MyApi.swift */; };
 		E19C4E6F2791ED54003A980A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E6E2791ED54003A980A /* SDWebImageSwiftUI */; };
 		E19C4E712791EF12003A980A /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E702791EF12003A980A /* ImageView.swift */; };
-		E19C4E732791F745003A980A /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E722791F745003A980A /* ChannelsView.swift */; };
 		E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7427922052003A980A /* ImageViewSmall.swift */; };
 		E19C4E7727922B60003A980A /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7627922B60003A980A /* SliderView.swift */; };
 		E19C4E792792DF5C003A980A /* ParseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E782792DF5C003A980A /* ParseController.swift */; };
@@ -74,14 +73,13 @@
 		E140EBD127B2607600567B49 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowInMainView.swift; sourceTree = "<group>"; };
 		E140EBD727B2993C00567B49 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
-		E140EBE127B2B44600567B49 /* KFAnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFAnimatedImage.swift; sourceTree = "<group>"; };
+		E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayModel.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		E19C4E4627907D63003A980A /* Programs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Programs.swift; sourceTree = "<group>"; };
 		E19C4E4827912EDF003A980A /* MyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApi.swift; sourceTree = "<group>"; };
 		E19C4E702791EF12003A980A /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		E19C4E722791F745003A980A /* ChannelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
 		E19C4E7427922052003A980A /* ImageViewSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSmall.swift; sourceTree = "<group>"; };
 		E19C4E7627922B60003A980A /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		E19C4E782792DF5C003A980A /* ParseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseController.swift; sourceTree = "<group>"; };
@@ -192,11 +190,9 @@
 		E16AF8D0279CCF7A0009A6AA /* Channels */ = {
 			isa = PBXGroup;
 			children = (
-				E19C4E722791F745003A980A /* ChannelsView.swift */,
 				E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */,
 				E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */,
 				E140EBD727B2993C00567B49 /* RadioButtonsView.swift */,
-				E140EBE127B2B44600567B49 /* KFAnimatedImage.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -268,6 +264,7 @@
 				E19C4E9327948594003A980A /* Users.swift */,
 				E19C4EC027973635003A980A /* HexStringToUIColor.swift */,
 				E19C4F5F279AD68D003A980A /* CategoriesModel.swift */,
+				E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,12 +382,10 @@
 				E19C4EC9279770BF003A980A /* SideMenuViewModel.swift in Sources */,
 				E19C4E7727922B60003A980A /* SliderView.swift in Sources */,
 				E140EB9127AA73D200567B49 /* Constans.swift in Sources */,
-				E19C4E732791F745003A980A /* ChannelsView.swift in Sources */,
 				E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
 				E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */,
-				E140EBE227B2B44600567B49 /* KFAnimatedImage.swift in Sources */,
 				E19C4EB827957A04003A980A /* ContentView3.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
@@ -415,6 +410,7 @@
 				E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */,
 				E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */,
 				E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */,
+				E140EBE427B2F2B000567B49 /* RadioPlayModel.swift in Sources */,
 				E19C4E7E27933B89003A980A /* ProgramsView.swift in Sources */,
 				E19C4E792792DF5C003A980A /* ParseController.swift in Sources */,
 			);

@@ -40,6 +40,7 @@ struct LiveAudio: Codable, Identifiable{
 // completion: @escaping ([Response]) -> ()
 class ChannelApiModel: ObservableObject {
     let db = Firestore.firestore()
+    let currentChannel = 0
     @Published var channels = [Channels]()
     @Published var channelsSavedArray = [Channels]()
    
@@ -188,5 +189,6 @@ class ChannelApiModel: ObservableObject {
       
         return false
     }
+    
 }
 
