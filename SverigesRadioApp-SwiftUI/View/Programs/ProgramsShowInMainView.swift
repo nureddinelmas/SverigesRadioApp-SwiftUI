@@ -28,9 +28,9 @@ struct ProgramsShowInMainView: View {
                         ForEach(program.sorted(by: { $0.id! > $1.id! }).prefix(isShowMore)) { (item) in
 
                                     NavigationLink {
-                                        ProgramsView(programs: item)
+                                        ProgramsView(program: item)
                                         } label: {
-                                            ProgramsRowView(program: item, likeButtonShow: false)
+                                            ProgramsRowView(program: item)
                                         }
                         }
                         

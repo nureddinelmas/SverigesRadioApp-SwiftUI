@@ -122,7 +122,7 @@ class ProgramsApi: ObservableObject{
  
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         
-        db.collection("Users").document(currentUserUid).collection("ProgramsFavorite").whereField("id", isEqualTo: progFavori.id!).getDocuments { snapshot, error in
+        COLLECTION_USERS.document(currentUserUid).collection("ProgramsFavorite").whereField("id", isEqualTo: progFavori.id!).getDocuments { snapshot, error in
 
             if ((snapshot?.documents.isEmpty) == true) {
                 self.saveProgramsFavorite(progFavori: progFavori)
@@ -135,7 +135,7 @@ class ProgramsApi: ObservableObject{
     func saveFavoriIsSaved (documentId : String){
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
 
-        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").document(documentId).updateData(["isSaved" : true])
+        COLLECTION_USERS.document(currentUserId).collection("ProgramsFavorite").document(documentId).updateData(["isSaved" : true])
 
     }
     
@@ -144,28 +144,11 @@ class ProgramsApi: ObservableObject{
 
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         
-        db.collection("Users").document(currentUserId).collection("ProgramsFavorite").addSnapshotListener { snapshot, error in
-            guard let snapshot = snapshot else { return }
-            self.favoriInfoArray.removeAll()
-            for document in snapshot.documents {
-                let result = Result {
-                    try document.data(as: Programs.self)
-                }
+        COLLECTION_USERS.document(currentUserId).collection("ProgramsFavorite").addSnapshotListener { snapshot, error in
             
-                switch result {
-                case .success(let success):
-                    if let success = success {
-                     self.favoriInfoArray.append(success)
-                    }
-                case .failure(let failure):
-                        print("Failed \(failure)")
-                }
-                
-            }
-      
-                    self.objectWillChange.send()
-            
-            
+            guard let documents = snapshot?.documents else { return }
+            self.favoriInfoArray = documents.compactMap({ try? $0.data(as: Programs.self) })
+          
             }
 
     }
@@ -193,6 +176,18 @@ class ProgramsApi: ObservableObject{
     }
     
 
+    
+    func addFavorite (program : Programs) {
+        if checkDocumentId(program: program) {
+            
+            deleteFavoriPrograms(progFavori: program)
+            favoriInfoArray.removeAll()
+            favoriProgramsListListener()
+        } else {
+            checkProgramHasBeenSaved(progFavori: program)
+        }
+    }
+    
     
     
     }

@@ -18,7 +18,7 @@ struct RadioButtonsView: View {
         @State var player:AVPlayer?
         @State var sliderValue: Float = 0.0
         @ObservedObject var toUIColor = HexStringToUIColor()
-//        @ObservedObject var apiChannelModel : ChannelApiModel
+        @EnvironmentObject var apiChannelModel : ChannelApiModel
         @State var indexItem : Int
         let channe : [Channels]
     
@@ -34,6 +34,7 @@ struct RadioButtonsView: View {
                 let renk = toUIColor.hexStringToUIColor(hex: channelItem.color ?? "")
                 Color(renk).ignoresSafeArea()
                 VStack{
+                    
                     ZStack{
                         Circle().foregroundColor(.gray).shadow(radius: 20).opacity(0.4).frame(width: width * 0.92 , height: height * 0.43)
                         Circle().foregroundColor(.white).shadow(radius: 10).opacity(0.5).frame(width: width * 0.88 , height: height * 0.38)
@@ -51,7 +52,6 @@ struct RadioButtonsView: View {
                         
                         AnimatedImage(url: URL(string: "https://miro.medium.com/max/724/1*yZdxL9Hh878Ivnn-bjP9Tw.gif"), isAnimating : $isAnimated).resizable().scaledToFill().opacity(0.2).onAppear {
                             isAnimated = false
-                            print(isAnimated)
                         }
  
                     }.frame(width: width * 0.4, height: height * 0.1).scaledToFill().padding()
@@ -112,6 +112,7 @@ struct RadioButtonsView: View {
                 }
 
             }
+            .navigationBarItems(trailing: MyLikeButtonView(apiChannelModel: apiChannelModel, chn: channelItem))
             
         }
         

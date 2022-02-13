@@ -17,7 +17,7 @@ struct ChannelsVerticalView: View {
     var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
     
     var body: some View {
-        MyChannelView(searchText: $searchText).searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Söka en kanal...")
+        MyChannelView(searchText: $searchText).searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Sök en kanal...")
     }
     
     
@@ -55,7 +55,10 @@ struct MyChannelView: View {
                                                     Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                                 }.padding(.leading)
                                                 Spacer()
-                                                MyLikeButtonView(apiChannelModel: apiModel, chn: item).padding(.trailing, 10)
+                                                if FirebaseActions.sharedUser.userSession?.uid != nil {
+                                                    MyLikeButtonView(apiChannelModel: apiModel, chn: item).padding(.trailing, 10)
+
+                                                }
                                             }.padding(.horizontal, 4)
                                             
                                             

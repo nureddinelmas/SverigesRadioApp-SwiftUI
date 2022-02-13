@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ChannelsShowView: View {
-    @ObservedObject var apiModel = ChannelApiModel()
+    @EnvironmentObject var apiModel : ChannelApiModel
     @ObservedObject var toUIColor = HexStringToUIColor()
     @Binding var searchText : String
     var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }

@@ -11,12 +11,15 @@ struct CategoriesView: View {
     @StateObject var apiProgram = ProgramsApi()
 
     @Binding var programid : Int
+    @State var titleOfNavigation : String = "Categories"
+    
+    @State var programname:String = "All Categories"
 
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     
     var body: some View {
-            MenuInCategoryView(programid: $programid)
+//            MenuInCategoryView(programid: $programid)
             SwiftUI.ScrollView {
                
                     VStack {
@@ -26,15 +29,46 @@ struct CategoriesView: View {
                             CategoryOneView(apiProgram: apiProgram, programid: $programid)
                         }
                     }
-                            
+                    .navigationTitle(titleOfNavigation)
+                    .navigationBarItems(trailing: categories)
                 }
             }
+    
+    
+    
+    
+    
+    var categories : some View {
+
+            Menu  {
+                ForEach(CategoriesModel.allCases, id:\.self){ option in
+                    Button(option.name) {
+                        programid = option.id
+                        programname = option.name
+                        titleOfNavigation = option.name
+                    }
+                }
+            } label: {
+                HStack{
+//                    Text(programname).onAppear {
+//                        programid = 0
+//                    }
+                    Image(systemName: "ellipsis")
+                }
+//                .font(.system(size: 20)).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
+               
+            }
+    }
+    
+    
+    
 }
 
 struct CategoryAllView : View {
     @ObservedObject var apiProgram : ProgramsApi
     @State var isShowMoreCategory = 50
     
+
     
     var body: some View {
         
@@ -42,7 +76,7 @@ struct CategoryAllView : View {
         
        if item.programcategory?.id != nil {
           NavigationLink {
-             ProgramsView(programs: item)
+             ProgramsView(program: item)
                } label: {
                 CellOfCategoryView(program: item)
                    Divider()
@@ -61,7 +95,6 @@ struct CategoryAllView : View {
       }.foregroundColor(Color.white).background(Color.red).cornerRadius(20)
     }
 }
-    
 }
 
 
@@ -77,7 +110,7 @@ struct CategoryOneView : View {
            
            if item.programcategory?.id == programid {
                NavigationLink {
-                ProgramsView(programs: item)
+                ProgramsView(program: item)
                  } label: {
                    CellOfCategoryView(program: item)
                      Divider()

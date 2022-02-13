@@ -26,17 +26,19 @@ struct ProgramsShowView: View {
         
         SwiftUI.ScrollView {
                 LazyVStack{
-                    Text("Programs").font(.system(size: 20)).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
+//                    Text("Programs").font(.system(size: 20)).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
 
                     ForEach(program.sorted(by: { $0.id! > $1.id! }).prefix(isShowMore)) { (item) in
 
                                 NavigationLink {
-                                    ProgramsView(programs: item)
+                                    ProgramsView(program: item)
                                     } label: {
-                                        ProgramsRowView(program: item, likeButtonShow: true)
-                                    }
+                                        ProgramsRowView(program: item)
+                                    }.gesture(LongPressGesture(minimumDuration: 2.0).onEnded({ _ in
+                                        print("long klick pressed")
+                                    }))
                     }.searchable(text: $searchProgramText, placement: .navigationBarDrawer, prompt: "Search details in programs...")
-                    
+                        .navigationTitle("Programs")
                     
                      Button{
                         isShowMore += 10

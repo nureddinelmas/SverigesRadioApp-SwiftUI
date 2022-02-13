@@ -10,7 +10,7 @@ import Firebase
 
 struct MyPageView: View {
     @ObservedObject var chanApiModel = ChannelApiModel()
-    @StateObject var progApiModel = ProgramsApi()
+    @ObservedObject var progApiModel = ProgramsApi()
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -36,6 +36,7 @@ struct MyPageView: View {
         
         
         
+        .navigationTitle("My Page")
         .navigationBarItems(trailing: logoutButton )
 }
     
@@ -62,22 +63,26 @@ struct ChannelRowInMyPage: View {
         
             ScrollView {
                 Text("My Favori Channels").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-                ForEach(channels.indices){ index in
-                    let renk = toUIColor.hexStringToUIColor(hex: "#\(channels[index].color ?? "")")
+                ForEach(Array(channels.enumerated()), id:\.offset){ index, item in
+                    let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                         NavigationLink {
                             RadioButtonsView(indexItem: index, channe: channels)
                         } label: {
                             HStack {
-                                    AsyncImage(url: URL(string: channels[index].imagetemplate ?? "")){img in
+                                    AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in
                                         img.resizable().scaledToFit().frame(width: 90, height: 90, alignment: .center)
                                     } placeholder: {
                                         ProgressView()
                                     }
                                 VStack{
-                                    Text(channels[index].name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
-                                    Text(channels[index].channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                 }.padding(.leading)
                                 Spacer()
+                                Button(action: {chanApiModel.deleteChannelToSavedInFirebase(delChannel: item)}) {
+                                    Image(systemName: "trash").resizable().scaledToFit().frame(width: 26, height: 26, alignment: .trailing)
+                                }.padding(.trailing, 10)
+                               
                             }
                         
                         }.border(.white, width: 2).shadow(color: .black, radius: 4).frame(width: UIScreen.main.bounds.width).background(Color(renk))
@@ -94,8 +99,17 @@ struct ProgramsRowInMyPage: View {
     var body: some View {
         ScrollView {
             Text("My Favori Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
-            ForEach(progApiModel.favoriInfoArray){ item in
-                NavigationLink(destination: {ProgramsView(programs: item)}, label: {  ProgramsRowView(program: item, likeButtonShow: true) })
+            ForEach(ProgramsApi.sharedPrograms.favoriInfoArray){ item in
+                NavigationLink(destination: {ProgramsView(program: item)}, label: {
+                    HStack{
+                        
+                        ProgramsRowView(program: item).overlay(Button(action: {progApiModel.deleteFavoriPrograms(progFavori: item)}) {
+                            Image(systemName: "trash").resizable().scaledToFit().frame(width: 26, height: 26, alignment: .trailing).padding(.leading, 350).padding(.top, 90)
+                        })
+                    }
+                    
+                    
+                })
             }
         }
     }

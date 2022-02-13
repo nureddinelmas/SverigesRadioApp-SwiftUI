@@ -44,6 +44,7 @@ class ChannelApiModel: ObservableObject {
     @Published var channels = [Channels]()
     @Published var channelsSavedArray = [Channels]()
    
+    static let sharedChannels = ChannelApiModel()
     
     init (){
         self.getChannels()

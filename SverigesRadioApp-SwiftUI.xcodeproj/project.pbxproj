@@ -21,6 +21,8 @@
 		E140EBD827B2993C00567B49 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD727B2993C00567B49 /* RadioButtonsView.swift */; };
 		E140EBE027B2AECC00567B49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E140EBDF27B2AECC00567B49 /* Kingfisher */; };
 		E140EBE427B2F2B000567B49 /* RadioPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */; };
+		E18E96C027B70926005CBD9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96BF27B70926005CBD9E /* ButtonView.swift */; };
+		E18E96C227B9AFA6005CBD9E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
 		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
@@ -73,6 +75,8 @@
 		E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowInMainView.swift; sourceTree = "<group>"; };
 		E140EBD727B2993C00567B49 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
 		E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayModel.swift; sourceTree = "<group>"; };
+		E18E96BF27B70926005CBD9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				E19C4E7427922052003A980A /* ImageViewSmall.swift */,
 				E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */,
 				E140EBD127B2607600567B49 /* CustomSecureField.swift */,
+				E18E96BF27B70926005CBD9E /* ButtonView.swift */,
+				E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -241,12 +247,12 @@
 		E19C4E7B27933B3E003A980A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E19C4ECA279770CB003A980A /* SideMenu */,
 				E16AF8D2279CCFAD0009A6AA /* Login */,
 				E16AF8D1279CCF960009A6AA /* Categories */,
 				E16AF8D0279CCF7A0009A6AA /* Channels */,
 				E16AF8CF279CCF5D0009A6AA /* Programs */,
 				E12638F4278EF16000774AE0 /* ContentView.swift */,
-				E19C4ECA279770CB003A980A /* SideMenu */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			files = (
 				E19C4E9027943D9A003A980A /* RegisterView.swift in Sources */,
 				E19C4F7C279B8736003A980A /* ProgramsRowView.swift in Sources */,
+				E18E96C027B70926005CBD9E /* ButtonView.swift in Sources */,
 				E19C4EBD2795A5EB003A980A /* ChannelsShowView.swift in Sources */,
 				E19C4F60279AD68D003A980A /* CategoriesModel.swift in Sources */,
 				E19C4F5E279AD547003A980A /* MenuInCategoryView.swift in Sources */,
@@ -384,6 +391,7 @@
 				E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */,
 				E19C4EB827957A04003A980A /* ContentView3.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
+				E18E96C227B9AFA6005CBD9E /* ActivityViewController.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
 				E19C4EB427957501003A980A /* LoginView.swift in Sources */,
 				E19C4EC52797696D003A980A /* SideMenuOptionsView.swift in Sources */,
