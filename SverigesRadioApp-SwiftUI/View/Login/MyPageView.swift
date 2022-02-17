@@ -66,7 +66,7 @@ struct ChannelRowInMyPage: View {
                 ForEach(Array(channels.enumerated()), id:\.offset){ index, item in
                     let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
                         NavigationLink {
-                            RadioButtonsView(indexItem: index, channe: channels)
+                            RadioView(indexItem: index, viewModel: chanApiModel, channe: channels)
                         } label: {
                             HStack {
                                     AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in
@@ -79,7 +79,7 @@ struct ChannelRowInMyPage: View {
                                     Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                 }.padding(.leading)
                                 Spacer()
-                                Button(action: {chanApiModel.deleteChannelToSavedInFirebase(delChannel: item)}) {
+                                Button(action: {chanApiModel.deleteChannelToSavedInFirebase(channel: item)}) {
                                     Image(systemName: "trash").resizable().scaledToFit().frame(width: 26, height: 26, alignment: .trailing)
                                 }.padding(.trailing, 10)
                                
@@ -100,16 +100,11 @@ struct ProgramsRowInMyPage: View {
         ScrollView {
             Text("My Favori Programs").font(.largeTitle).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
             ForEach(ProgramsApi.sharedPrograms.favoriInfoArray){ item in
-                NavigationLink(destination: {ProgramsView(program: item)}, label: {
-                    HStack{
-                        
-                        ProgramsRowView(program: item).overlay(Button(action: {progApiModel.deleteFavoriPrograms(progFavori: item)}) {
-                            Image(systemName: "trash").resizable().scaledToFit().frame(width: 26, height: 26, alignment: .trailing).padding(.leading, 350).padding(.top, 90)
-                        })
-                    }
-                    
-                    
-                })
+                ZStack{
+                    NavigationLink(destination: {ProgramsView(program: item)}, label: {
+                            ProgramsRowView(program: item, isDeleteShowing: true)
+                    })
+                }
             }
         }
     }

@@ -6,26 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ChannelsVerticalView: View {
-    @StateObject var apiModel = ChannelApiModel()
-    @ObservedObject var toUIColor = HexStringToUIColor()
     @State private var searchText = ""
-    @State var isAddedFavorite = false
-
-
-    var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
-    
     var body: some View {
         MyChannelView(searchText: $searchText).searchable(text: $searchText, placement: .navigationBarDrawer, prompt: "Sök en kanal...")
     }
-    
-    
-    
-
-    
-    
+   
 }
+
 
 
 struct MyChannelView: View {
@@ -33,73 +23,84 @@ struct MyChannelView: View {
     @ObservedObject var toUIColor = HexStringToUIColor()
     @Binding var searchText : String
     @State var isAddedFavorite = false
-    @State var isShowMore = 10
 
-    var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty}) }
+
+    var channelsFilter : [Channels] { return apiModel.channels.filter({"\($0)".contains(searchText) || searchText.isEmpty})
+        
+    }
     var body: some View {
-            SwiftUI.ScrollView {
-                ForEach(Array(channelsFilter.prefix(isShowMore).enumerated()), id:\.offset){ index, item in
-                                    let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
-                                        NavigationLink {
-                                            RadioButtonsView(indexItem: index, channe: channelsFilter)
-                                        } label: {
-                                            HStack {
-                                                    AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in
-                                                        img.resizable().scaledToFit().frame(width: 90, height: 90, alignment: .center)
-                                                    } placeholder: {
-                                                        ProgressView()
+        VStack {
+            ScrollView (.vertical) {
+                    
+                    ForEach(Array(channelsFilter.enumerated()), id:\.offset){ index, item in
+                                        let renk = toUIColor.hexStringToUIColor(hex: "#\(item.color ?? "")")
+                                            NavigationLink {
+                                                RadioView(indexItem: index, viewModel: apiModel, channe: channelsFilter)
+                                               
+                                            } label: {
+                                                HStack {
+                                                        AsyncImage(url: URL(string: item.imagetemplate ?? "")){img in
+                                                            img.resizable().scaledToFit().frame(width: 90, height: 90, alignment: .center)
+                                                        } placeholder: {
+                                                            ProgressView()
+                                                        }
+                                                    VStack {
+                                                        
+                                                        Text(item.name ?? "Unknown").font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
+                                                        Text(item.channeltype ?? "Unknown information").font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
+                                                    }.padding(.leading)
+                                                    Spacer()
+                                                    if Auth.auth().currentUser?.uid != nil {
+                                                  
+                                                        LikeButtonChannelView(chn: item).padding(.trailing, 10)
+                                                        
                                                     }
-                                                VStack {
-                                                    
-                                                    Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
-                                                    Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
-                                                }.padding(.leading)
-                                                Spacer()
-                                                if FirebaseActions.sharedUser.userSession?.uid != nil {
-                                                    MyLikeButtonView(apiChannelModel: apiModel, chn: item).padding(.trailing, 10)
+                                                        
+                                                }.padding(.horizontal, 4)
+                                                
+                                                
+                                            }.border(.white, width: 2).shadow(color: .black, radius: 12).background(Color(renk)).padding(.trailing, 10).padding(.leading, 10)
+                      
+                                        }
+                                .navigationBarTitle("Channels")
 
-                                                }
-                                            }.padding(.horizontal, 4)
-                                            
-                                            
-                                        }.border(.white, width: 2).shadow(color: .black, radius: 12).background(Color(renk)).padding(.trailing, 10).padding(.leading, 10)
-                  
-                                    }
-                            .navigationBarTitle("Channels")
-                Button{
-                   isShowMore += 10
-               } label: {
-                   HStack{
-                       Image(systemName: "arrow.down.circle.fill").padding(.trailing, 10)
-                       Text("Show more").padding(.trailing, 10)
-                   }.foregroundColor(Color.white).background(Color.red).cornerRadius(20)
-                   
-               }
             }.listStyle(InsetListStyle())
+        }
     }
 }
 
 struct MyLikeButtonView: View {
-    @ObservedObject var apiChannelModel : ChannelApiModel
-    @State var chn : Channels
+//    @ObservedObject var apiChannelModel : ChannelApiModel
+//    @State var chn : Channels
+    @ObservedObject var viewModel : RadioViewModel
+    
+    init (chn : Channels) {
+        self.viewModel = RadioViewModel(channel: chn)
+    }
     
     var body: some View {
+
             Button(action: {
 //                Like button Action
                 
-                       if FirebaseActions.sharedUser.userSession != nil {
-                           if apiChannelModel.checkToChannelIsSaved(channel: chn) {
-                               apiChannelModel.deleteChannelToSavedInFirebase(delChannel: chn)
+                      
+                           if viewModel.isSaved {
+                               viewModel.deleteChannelToSavedInFirebase()
                            } else {
-                               apiChannelModel.checkChannelHasBeenSaved(channelFavori: chn)
+                               viewModel.saveChannelFavorite()
                            }
                           
-                       }
+                       
             }) {
-                Image(systemName: apiChannelModel.checkToChannelIsSaved(channel: chn) ? "heart.fill" : "heart").foregroundColor(apiChannelModel.checkToChannelIsSaved(channel: chn) ? .red : .white).shadow(color: apiChannelModel.checkToChannelIsSaved(channel: chn) ? .black : .white, radius: 4).font(.system(size: 23)).onAppear {
-                    apiChannelModel.favoriChannelListListener()
-                }
+//                Image(systemName: apiChannelModel.checkChannelIsSaved(channel: chn) ? "heart.fill" : "heart").foregroundColor(apiChannelModel.checkChannelIsSaved(channel: chn) ? .red : .white).shadow(color: apiChannelModel.checkChannelIsSaved(channel: chn) ? .black : .white, radius: 4).font(.system(size: 23))
+                
+                Image(systemName: viewModel.isSaved ? "heart.fill" : "heart").foregroundColor(viewModel.isSaved ? .red : .white).shadow(color: viewModel.isSaved ? .black : .white, radius: 4).font(.system(size: 23))
+
             }
+
     }
 }
+
+
+
 

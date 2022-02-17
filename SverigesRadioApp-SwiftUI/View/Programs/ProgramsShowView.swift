@@ -16,9 +16,9 @@ struct ProgramsShowView: View {
     @State var isShowMore = 20
     @State var searchProgramText : String = ""
 
-    
     var program : [Programs] {
-        return searchProgramText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchProgramText)
+//        return searchProgramText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchProgramText)
+        return apiProgram.programs.filter({ "\($0)".contains(searchProgramText) || searchProgramText.isEmpty })
     }
     
 
@@ -26,17 +26,15 @@ struct ProgramsShowView: View {
         
         SwiftUI.ScrollView {
                 LazyVStack{
-//                    Text("Programs").font(.system(size: 20)).padding(.leading).padding(.trailing).background(Color.red).foregroundColor(Color.white).cornerRadius(14)
+                    
 
                     ForEach(program.sorted(by: { $0.id! > $1.id! }).prefix(isShowMore)) { (item) in
 
                                 NavigationLink {
                                     ProgramsView(program: item)
                                     } label: {
-                                        ProgramsRowView(program: item)
-                                    }.gesture(LongPressGesture(minimumDuration: 2.0).onEnded({ _ in
-                                        print("long klick pressed")
-                                    }))
+                                        ProgramsRowView(program: item, isDeleteShowing: false)
+                                    }
                     }.searchable(text: $searchProgramText, placement: .navigationBarDrawer, prompt: "Search details in programs...")
                         .navigationTitle("Programs")
                     

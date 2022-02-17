@@ -26,7 +26,7 @@ struct Channels : Codable, Identifiable {
     var xmltvid : String?
     var id : Int
     var name : String?
-    var isSaved : Bool?
+   
 }
 
 
@@ -40,31 +40,15 @@ struct LiveAudio: Codable, Identifiable{
 // completion: @escaping ([Response]) -> ()
 class ChannelApiModel: ObservableObject {
     let db = Firestore.firestore()
-    let currentChannel = 0
     @Published var channels = [Channels]()
     @Published var channelsSavedArray = [Channels]()
    
-    static let sharedChannels = ChannelApiModel()
     
     init (){
-        self.getChannels()
+        getChannels()
         favoriChannelListListener()
     }
-    
-    func saveChannelFavorite(channel: Channels) {
-       
-        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-        
-        do {
-            _ = try db.collection("Users").document(currentUserUid).collection("ChannelFavorites").addDocument(from: channel)
-        } catch {
-            print("save Channels Favortite Error!")
-        }
-    }
-    
-    
-    
-    
+
     func getChannels() {
         
         guard let url = URL(string: Constants.channelsURL) else {return}
@@ -121,37 +105,13 @@ class ChannelApiModel: ObservableObject {
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         
         do {
-            _ = try db.collection("Users").document(currentUserUid).collection("ChannelsFavorite").document(String(channelFavori.id)).setData(from: channelFavori)
-
-            saveFavoriIsSaved(documentId: "\(channelFavori.id)")
+            _ = try COLLECTION_USERS.document(currentUserUid).collection("ChannelsFavorite").document(String(channelFavori.id)).setData(from: channelFavori)
          
         } catch {
             print("save Channels Favortite Error!")
         }
     }
     
-    
-    
-    func checkChannelHasBeenSaved(channelFavori: Channels){
- 
-        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-        
-        db.collection("Users").document(currentUserUid).collection("ChannelsFavorite").whereField("id", isEqualTo: channelFavori.id).getDocuments { snapshot, error in
-
-            if ((snapshot?.documents.isEmpty) == true) {
-                self.saveChannelFavorite(channelFavori: channelFavori)
-            }
-        }
-        }
-    
-    
-    
-    func saveFavoriIsSaved (documentId : String){
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-
-        db.collection("Users").document(currentUserId).collection("ChannelsFavorite").document(documentId).updateData(["isSaved" : true])
-
-    }
     
     
     func favoriChannelListListener () {
@@ -162,16 +122,16 @@ class ChannelApiModel: ObservableObject {
      
             guard let documents = snapshot?.documents else { return }
             self.channelsSavedArray = documents.compactMap({ try? $0.data(as: Channels.self) })
-            
+            print("favori Channels List Listener")
             }
 
     }
     
     
-    func deleteChannelToSavedInFirebase(delChannel : Channels) {
+    func deleteChannelToSavedInFirebase(channel : Channels) {
         guard let currentUserId = Auth.auth().currentUser?.uid else {return}
         
-        COLLECTION_USERS.document(currentUserId).collection("ChannelsFavorite").document(String(delChannel.id)).delete { err in
+        COLLECTION_USERS.document(currentUserId).collection("ChannelsFavorite").document(String(channel.id)).delete { err in
             if let err = err {
                 print("\(err)")
             } else {
@@ -181,13 +141,12 @@ class ChannelApiModel: ObservableObject {
     }
     
     
-    func checkToChannelIsSaved(channel: Channels) -> Bool {
+    func checkChannelIsSaved(channel: Channels) -> Bool {
         for item in channelsSavedArray {
-            if channel.id == item.id {
+            if item.id == channel.id {
                 return true
             }
         }
-      
         return false
     }
     

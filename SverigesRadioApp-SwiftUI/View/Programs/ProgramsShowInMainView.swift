@@ -30,7 +30,7 @@ struct ProgramsShowInMainView: View {
                                     NavigationLink {
                                         ProgramsView(program: item)
                                         } label: {
-                                            ProgramsRowView(program: item)
+                                            ProgramsRowView(program: item, isDeleteShowing: false)
                                         }
                         }
                         

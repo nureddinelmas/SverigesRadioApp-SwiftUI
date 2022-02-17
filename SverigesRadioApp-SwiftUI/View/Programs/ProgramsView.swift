@@ -66,7 +66,7 @@ struct LikeButtonView : View {
               Text(progApiModel.checkDocumentId(program: program) ? "Delete" : "Add Favorite")
               Image(systemName: progApiModel.checkDocumentId(program: program) ? "trash" : "heart")
              }.foregroundColor(.red)
-//            Image(systemName: progApiModel.checkDocumentId(program: program) ? "heart.fill" : "heart").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.height * 0.04).foregroundColor(.red)
+
         }.onAppear {
         
             progApiModel.favoriProgramsListListener()

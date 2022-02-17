@@ -18,11 +18,12 @@
 		E140EBD027B1DBBF00567B49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */; };
 		E140EBD227B2607600567B49 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD127B2607600567B49 /* CustomSecureField.swift */; };
 		E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */; };
-		E140EBD827B2993C00567B49 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD727B2993C00567B49 /* RadioButtonsView.swift */; };
+		E140EBD827B2993C00567B49 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBD727B2993C00567B49 /* RadioView.swift */; };
 		E140EBE027B2AECC00567B49 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E140EBDF27B2AECC00567B49 /* Kingfisher */; };
-		E140EBE427B2F2B000567B49 /* RadioPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */; };
 		E18E96C027B70926005CBD9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96BF27B70926005CBD9E /* ButtonView.swift */; };
 		E18E96C227B9AFA6005CBD9E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */; };
+		E18E96D027BE5106005CBD9E /* RadioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96CF27BE5106005CBD9E /* RadioViewModel.swift */; };
+		E18E96D227BE5B4A005CBD9E /* LikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96D127BE5B4A005CBD9E /* LikeButtonView.swift */; };
 		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
 		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
 		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
@@ -73,10 +74,11 @@
 		E140EBCF27B1DBBF00567B49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E140EBD127B2607600567B49 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		E140EBD527B28ECB00567B49 /* ProgramsShowInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowInMainView.swift; sourceTree = "<group>"; };
-		E140EBD727B2993C00567B49 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
-		E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayModel.swift; sourceTree = "<group>"; };
+		E140EBD727B2993C00567B49 /* RadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioView.swift; sourceTree = "<group>"; };
 		E18E96BF27B70926005CBD9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		E18E96CF27BE5106005CBD9E /* RadioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioViewModel.swift; sourceTree = "<group>"; };
+		E18E96D127BE5B4A005CBD9E /* LikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonView.swift; sourceTree = "<group>"; };
 		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
 		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
@@ -195,7 +197,8 @@
 			children = (
 				E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */,
 				E19C4F14279809CF003A980A /* ChannelsVerticalView.swift */,
-				E140EBD727B2993C00567B49 /* RadioButtonsView.swift */,
+				E140EBD727B2993C00567B49 /* RadioView.swift */,
+				E18E96D127BE5B4A005CBD9E /* LikeButtonView.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -267,7 +270,7 @@
 				E19C4E9327948594003A980A /* Users.swift */,
 				E19C4EC027973635003A980A /* HexStringToUIColor.swift */,
 				E19C4F5F279AD68D003A980A /* CategoriesModel.swift */,
-				E140EBE327B2F2B000567B49 /* RadioPlayModel.swift */,
+				E18E96CF27BE5106005CBD9E /* RadioViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				E19C4EC9279770BF003A980A /* SideMenuViewModel.swift in Sources */,
 				E19C4E7727922B60003A980A /* SliderView.swift in Sources */,
 				E140EB9127AA73D200567B49 /* Constans.swift in Sources */,
+				E18E96D227BE5B4A005CBD9E /* LikeButtonView.swift in Sources */,
 				E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
 				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
@@ -394,12 +398,13 @@
 				E18E96C227B9AFA6005CBD9E /* ActivityViewController.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
 				E19C4EB427957501003A980A /* LoginView.swift in Sources */,
+				E18E96D027BE5106005CBD9E /* RadioViewModel.swift in Sources */,
 				E19C4EC52797696D003A980A /* SideMenuOptionsView.swift in Sources */,
 				E19C4E8027933CB5003A980A /* UrlWebView.swift in Sources */,
 				E12638F5278EF16000774AE0 /* ContentView.swift in Sources */,
 				E19C4EC72797702E003A980A /* SideMenuHeaderView.swift in Sources */,
 				E19C4F1927982306003A980A /* MyPageView.swift in Sources */,
-				E140EBD827B2993C00567B49 /* RadioButtonsView.swift in Sources */,
+				E140EBD827B2993C00567B49 /* RadioView.swift in Sources */,
 				E19C4E8D27943ADB003A980A /* Styles.swift in Sources */,
 				E19C4E4727907D63003A980A /* Programs.swift in Sources */,
 				E19C4E9427948594003A980A /* Users.swift in Sources */,
@@ -414,7 +419,6 @@
 				E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */,
 				E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */,
 				E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */,
-				E140EBE427B2F2B000567B49 /* RadioPlayModel.swift in Sources */,
 				E19C4E7E27933B89003A980A /* ProgramsView.swift in Sources */,
 				E19C4E792792DF5C003A980A /* ParseController.swift in Sources */,
 			);

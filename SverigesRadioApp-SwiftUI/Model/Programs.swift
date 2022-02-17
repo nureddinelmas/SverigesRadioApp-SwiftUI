@@ -37,7 +37,7 @@ struct Programs: Codable, Identifiable{
     var responsibleeditor : String?
     var id : Int?
     var name : String
-    var isSaved : Bool?
+
 }
 
 struct ChannelProgram : Codable {
@@ -69,10 +69,8 @@ class ProgramsApi: ObservableObject{
     static let sharedPrograms = ProgramsApi()
     
     init () {
-        
         getProgramsData()
-        favoriProgramsListListener ()
-        
+        favoriProgramsListListener()
     }
      
      
@@ -109,9 +107,7 @@ class ProgramsApi: ObservableObject{
         guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         
         do {
-            _ = try db.collection("Users").document(currentUserUid).collection("ProgramsFavorite").document(String(progFavori.id!)).setData(from: progFavori)
-
-            saveFavoriIsSaved(documentId: "\(progFavori.id!)")
+            _ = try COLLECTION_USERS.document(currentUserUid).collection("ProgramsFavorite").document(String(progFavori.id!)).setData(from: progFavori)
          
         } catch {
             print("save Channels Favortite Error!")
@@ -130,14 +126,6 @@ class ProgramsApi: ObservableObject{
         }
         }
     
-    
-    
-    func saveFavoriIsSaved (documentId : String){
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-
-        COLLECTION_USERS.document(currentUserId).collection("ProgramsFavorite").document(documentId).updateData(["isSaved" : true])
-
-    }
     
     
     func favoriProgramsListListener () {

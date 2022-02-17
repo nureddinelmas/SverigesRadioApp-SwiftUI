@@ -10,17 +10,13 @@ import Firebase
 import SDWebImageSwiftUI
 
 struct ProgramsRowView: View {
-    
     @EnvironmentObject var progApiModel : ProgramsApi
 
     @State var program : Programs
-
+    @State var isDeleteShowing : Bool
  
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
-    
-
-    
     
     var body: some View {
 
@@ -37,11 +33,19 @@ struct ProgramsRowView: View {
                 }
                 VStack(alignment: .leading, spacing: 4) {
   
-                    Text(program.name).font(.system(size: 18)).lineLimit(1)
-                    Text(program.description).font(.system(size: 13)).multilineTextAlignment(.leading).frame(width: width * 0.68, height: height * 0.07, alignment: .leading)
+                    Text(program.name).font(.system(size: 18)).lineLimit(1).padding(.top, 5)
+                    Text(program.description).font(.system(size: 13)).multilineTextAlignment(.leading).frame(width: width * 0.68, height: height * 0.08, alignment: .leading)
                   
-                   Spacer()
-                    Text("Ansvårig Person : \(program.responsibleeditor ?? "unknown")").font(.system(size: 10)).padding(.bottom, 10)
+                   
+                    HStack{
+                        Text("Ansvårig Person : \(program.responsibleeditor ?? "unknown")").font(.system(size: 10)).padding(.bottom, 10)
+                        Spacer()
+                        if isDeleteShowing {
+                            Button(action: {progApiModel.deleteFavoriPrograms(progFavori: program)}) {Image(systemName: "trash").resizable().scaledToFit().frame(width: 26, height: 26, alignment: .trailing).padding(.bottom, 10)}
+                        }
+                        
+                    }
+                    
 
                 }.frame(width: width * 0.68).foregroundColor(.black)
                 Spacer()
