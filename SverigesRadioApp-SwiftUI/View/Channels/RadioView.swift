@@ -16,7 +16,7 @@ struct RadioView: View {
         @State var isAnimated = true
         @State var isPlaying = true
         @State var player:AVPlayer?
-        @State var sliderValue: Float = 0.3
+        @State var sliderValue: Float = 0.2
         @ObservedObject var toUIColor = HexStringToUIColor()
         @State var indexItem : Int
     
@@ -25,10 +25,11 @@ struct RadioView: View {
         var channe = [Channels]()
 
         var arrayCount : Int { return channe.count-1 }
+    
 
         var body: some View {
+            
             ZStack {
-
                 let renk = toUIColor.hexStringToUIColor(hex: channe[indexItem].color ?? "")
                 Color(renk).ignoresSafeArea()
                 VStack{
@@ -112,7 +113,8 @@ struct RadioView: View {
                 }
 
             }
-            .navigationBarItems(trailing: LikeButtonChannelView(chn: channe[indexItem]))
+            .navigationBarItems(trailing:LikeButtonChannelView(chn: channe[indexItem])
+            )
 
         }
 

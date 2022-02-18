@@ -75,8 +75,8 @@ struct ChannelRowInMyPage: View {
                                         ProgressView()
                                     }
                                 VStack{
-                                    Text(item.name!).font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
-                                    Text(item.channeltype!).font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(item.name ?? "").font(.system(size: 18, weight: .bold, design: .default)).foregroundColor(.white)
+                                    Text(item.channeltype ?? "").font(.system(size: 11, weight: .bold, design: .default)).foregroundColor(.white)
                                 }.padding(.leading)
                                 Spacer()
                                 Button(action: {chanApiModel.deleteChannelToSavedInFirebase(channel: item)}) {

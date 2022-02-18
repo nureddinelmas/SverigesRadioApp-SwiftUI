@@ -15,7 +15,8 @@ struct ProgramsShowInMainView: View {
 
         
         var program : [Programs] {
-            return searchText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchText)
+//            return searchText.isEmpty ? apiProgram.programs : apiProgram.filteredPrograms(searchText)
+            return apiProgram.programs.filter({ "\($0)".contains(searchText) || searchText.isEmpty })
         }
         
 
