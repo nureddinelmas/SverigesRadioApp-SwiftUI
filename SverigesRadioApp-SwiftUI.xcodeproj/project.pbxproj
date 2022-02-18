@@ -24,11 +24,7 @@
 		E18E96C227B9AFA6005CBD9E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */; };
 		E18E96D027BE5106005CBD9E /* RadioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96CF27BE5106005CBD9E /* RadioViewModel.swift */; };
 		E18E96D227BE5B4A005CBD9E /* LikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E96D127BE5B4A005CBD9E /* LikeButtonView.swift */; };
-		E19C4E4027905C33003A980A /* myData.json in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E3F27905C33003A980A /* myData.json */; };
-		E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E412790789F003A980A /* Bundle-Decodable.swift */; };
-		E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4327907ADE003A980A /* ContentView2.swift */; };
 		E19C4E4727907D63003A980A /* Programs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4627907D63003A980A /* Programs.swift */; };
-		E19C4E4927912EDF003A980A /* MyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E4827912EDF003A980A /* MyApi.swift */; };
 		E19C4E6F2791ED54003A980A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E19C4E6E2791ED54003A980A /* SDWebImageSwiftUI */; };
 		E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7427922052003A980A /* ImageViewSmall.swift */; };
 		E19C4E7727922B60003A980A /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E7627922B60003A980A /* SliderView.swift */; };
@@ -45,7 +41,6 @@
 		E19C4E9227948565003A980A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19C4E9127948565003A980A /* GoogleService-Info.plist */; };
 		E19C4E9427948594003A980A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4E9327948594003A980A /* Users.swift */; };
 		E19C4EB427957501003A980A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB327957501003A980A /* LoginView.swift */; };
-		E19C4EB827957A04003A980A /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EB727957A04003A980A /* ContentView3.swift */; };
 		E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBA27959165003A980A /* ProgramsShowView.swift */; };
 		E19C4EBD2795A5EB003A980A /* ChannelsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */; };
 		E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C4EC027973635003A980A /* HexStringToUIColor.swift */; };
@@ -79,11 +74,7 @@
 		E18E96C127B9AFA6005CBD9E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		E18E96CF27BE5106005CBD9E /* RadioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioViewModel.swift; sourceTree = "<group>"; };
 		E18E96D127BE5B4A005CBD9E /* LikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonView.swift; sourceTree = "<group>"; };
-		E19C4E3F27905C33003A980A /* myData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = myData.json; sourceTree = "<group>"; };
-		E19C4E412790789F003A980A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
-		E19C4E4327907ADE003A980A /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		E19C4E4627907D63003A980A /* Programs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Programs.swift; sourceTree = "<group>"; };
-		E19C4E4827912EDF003A980A /* MyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApi.swift; sourceTree = "<group>"; };
 		E19C4E7427922052003A980A /* ImageViewSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSmall.swift; sourceTree = "<group>"; };
 		E19C4E7627922B60003A980A /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		E19C4E782792DF5C003A980A /* ParseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseController.swift; sourceTree = "<group>"; };
@@ -95,7 +86,6 @@
 		E19C4E9127948565003A980A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E19C4E9327948594003A980A /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		E19C4EB327957501003A980A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		E19C4EB727957A04003A980A /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
 		E19C4EBA27959165003A980A /* ProgramsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramsShowView.swift; sourceTree = "<group>"; };
 		E19C4EBC2795A5EB003A980A /* ChannelsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsShowView.swift; sourceTree = "<group>"; };
 		E19C4EC027973635003A980A /* HexStringToUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexStringToUIColor.swift; sourceTree = "<group>"; };
@@ -151,7 +141,6 @@
 				E19C4E7C27933B54003A980A /* Model */,
 				E19C4E7B27933B3E003A980A /* View */,
 				E19C4E7A2792E924003A980A /* Extra */,
-				E19C4E4527907D35003A980A /* ÖvrigaExempel */,
 				E12638F2278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift */,
 				E12638F6278EF16300774AE0 /* Assets.xcassets */,
 				E12638F8278EF16300774AE0 /* Preview Content */,
@@ -223,19 +212,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		E19C4E4527907D35003A980A /* ÖvrigaExempel */ = {
-			isa = PBXGroup;
-			children = (
-				E19C4E3F27905C33003A980A /* myData.json */,
-				E19C4E412790789F003A980A /* Bundle-Decodable.swift */,
-				E19C4E4327907ADE003A980A /* ContentView2.swift */,
-				E19C4E4827912EDF003A980A /* MyApi.swift */,
-				E19C4EB927957A0A003A980A /* ChannelExempel */,
-			);
-			name = "ÖvrigaExempel";
-			path = "ÖvrigaExempel";
-			sourceTree = "<group>";
-		};
 		E19C4E7A2792E924003A980A /* Extra */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,14 +249,6 @@
 				E18E96CF27BE5106005CBD9E /* RadioViewModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		E19C4EB927957A0A003A980A /* ChannelExempel */ = {
-			isa = PBXGroup;
-			children = (
-				E19C4EB727957A04003A980A /* ContentView3.swift */,
-			);
-			path = ChannelExempel;
 			sourceTree = "<group>";
 		};
 		E19C4ECA279770CB003A980A /* SideMenu */ = {
@@ -367,7 +335,6 @@
 			files = (
 				E12638FA278EF16300774AE0 /* Preview Assets.xcassets in Resources */,
 				E19C4E9227948565003A980A /* GoogleService-Info.plist in Resources */,
-				E19C4E4027905C33003A980A /* myData.json in Resources */,
 				E12638F7278EF16300774AE0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,9 +358,7 @@
 				E18E96D227BE5B4A005CBD9E /* LikeButtonView.swift in Sources */,
 				E140EBD627B28ECB00567B49 /* ProgramsShowInMainView.swift in Sources */,
 				E1263905278F736B00774AE0 /* Weather.swift in Sources */,
-				E19C4E4927912EDF003A980A /* MyApi.swift in Sources */,
 				E19C4F1B279844B4003A980A /* CategoriesView.swift in Sources */,
-				E19C4EB827957A04003A980A /* ContentView3.swift in Sources */,
 				E1263901278EF1B200774AE0 /* Channels.swift in Sources */,
 				E18E96C227B9AFA6005CBD9E /* ActivityViewController.swift in Sources */,
 				E137288B278F894400A0AEA4 /* ToTryView.swift in Sources */,
@@ -411,13 +376,11 @@
 				E140EBD027B1DBBF00567B49 /* CustomTextField.swift in Sources */,
 				E19C4EBB27959165003A980A /* ProgramsShowView.swift in Sources */,
 				E19C4F15279809D0003A980A /* ChannelsVerticalView.swift in Sources */,
-				E19C4E4427907ADE003A980A /* ContentView2.swift in Sources */,
 				E12638F3278EF16000774AE0 /* SverigesRadioApp_SwiftUIApp.swift in Sources */,
 				E140EBD227B2607600567B49 /* CustomSecureField.swift in Sources */,
 				E19C4EC127973636003A980A /* HexStringToUIColor.swift in Sources */,
 				E19C4EC327976852003A980A /* SideMenuView.swift in Sources */,
 				E19C4E7527922052003A980A /* ImageViewSmall.swift in Sources */,
-				E19C4E422790789F003A980A /* Bundle-Decodable.swift in Sources */,
 				E19C4E8B279433B7003A980A /* InloggningView.swift in Sources */,
 				E19C4E7E27933B89003A980A /* ProgramsView.swift in Sources */,
 				E19C4E792792DF5C003A980A /* ParseController.swift in Sources */,
